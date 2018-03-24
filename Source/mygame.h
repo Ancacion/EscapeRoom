@@ -71,6 +71,8 @@ public:
 	void SetMovingRight(bool flag); // 設定是否正在往右移動
 	void SetMovingUp(bool flag);	// 設定是否正在往上移動
 	void SetXY(int nx, int ny);		// 設定擦子左上角座標
+	void Initialize(int, int);
+	void LoadBitmap(int);
 protected:
 	CAnimation animation;		// 擦子的動畫
 	int x, y;					// 擦子左上角座標
@@ -78,6 +80,7 @@ protected:
 	bool isMovingLeft;			// 是否正在往左移動
 	bool isMovingRight;			// 是否正在往右移動
 	bool isMovingUp;			// 是否正在往上移動
+	int initX = 0;
 };
 
 /////////////////////////////////////////////////////////////////////////////
@@ -200,6 +203,27 @@ public:
 	void OnMouseMove(UINT nFlags, CPoint point);	// 處理滑鼠的動作 
 	void OnRButtonDown(UINT nFlags, CPoint point);  // 處理滑鼠的動作
 	void OnRButtonUp(UINT nFlags, CPoint point);	// 處理滑鼠的動作
+	void InitMap();
+	void MoveMap();
+	void LoadMap();
+	void ShowMap();
+	void MVMap1Left();
+	void MVMap1Right();
+	void MVMap2Left();
+	void MVMap2Right();
+	void MVMap3Left();
+	void MVMap3Right();
+	void MVMap4Left();
+	void MVMap4Right();
+	void MVMap5Left();
+	void MVMap5Right();
+	void MVMap6Left();
+	void MVMap6Right();
+	void MVMap7Left();
+	void MVMap7Right();
+	void MVMap8Left();
+	void MVMap8Right();
+	void MVClickToStartRight();
 protected:
 	CPractice c_practice;
 	void OnMove();									// 移動遊戲元素
@@ -216,6 +240,17 @@ private:
 	CInteger		hits_left;	// 剩下的撞擊數
 	CBouncingBall   bball;		// 反覆彈跳的球
 	int picX, picY;
+	CEraser map0;
+	CEraser map1, down1;
+	CEraser map2, up2, down2;
+	CEraser map3, down3, left3, right3;
+	CEraser map4, left4;
+	CEraser map5, up5, down5;
+	CEraser map6, up6, down6, left6, right6;
+	CEraser map7, down7, left7, lcdTV7, safeBox7;
+	CEraser map8, down8;
+	CEraser clickToStart;
+	int mapNow = 0;
 };
 
 /////////////////////////////////////////////////////////////////////////////

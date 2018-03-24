@@ -247,16 +247,20 @@ void CEraser::LoadBitmap()
 
 void CEraser::OnMove()
 {
-	const int STEP_SIZE = 2;
+//	const int STEP_SIZE = 2;
 	animation.OnMove();
-	if (isMovingLeft)
-		x -= STEP_SIZE;
-	if (isMovingRight)
-		x += STEP_SIZE;
-	if (isMovingUp)
-		y -= STEP_SIZE;
-	if (isMovingDown)
-		y += STEP_SIZE;
+//	if (isMovingLeft)
+//		x -= STEP_SIZE;
+//	if (isMovingRight)
+//		x += STEP_SIZE;
+//	if (isMovingUp)
+//		y -= STEP_SIZE;
+//	if (isMovingDown)
+//		y += STEP_SIZE;
+	if (isMovingLeft && x == 1000 + initX)
+		x -= 1000;
+	if (isMovingRight && x == 0 + initX)
+		x += 1000;
 }
 
 void CEraser::SetMovingDown(bool flag)
@@ -288,6 +292,19 @@ void CEraser::OnShow()
 {
 	animation.SetTopLeft(x,y);
 	animation.OnShow();
+}
+
+void CEraser::Initialize(int nx, int ny)
+{
+	initX = nx;
+	x = nx;
+	y = ny;
+	isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
+}
+
+void CEraser::LoadBitmap(int IDB_BITMAP)
+{
+	animation.AddBitmap(IDB_BITMAP, RGB(255, 255, 255));
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -430,6 +447,291 @@ CGameStateRun::~CGameStateRun()
 	delete [] ball;
 }
 
+void CGameStateRun::InitMap()
+{
+	map0.Initialize(0, 0);
+
+	map1.Initialize(0, 0);
+	down1.Initialize(80, 410);
+
+	map2.Initialize(0, 0);
+	up2.Initialize(325, 300);
+	down2.Initialize(330, 440);
+
+	map3.Initialize(0, 0);
+	down3.Initialize(350, 430);
+	left3.Initialize(255, 290);
+	right3.Initialize(350, 190);
+
+	map4.Initialize(0, 0);
+	left4.Initialize(25, 400);
+
+	map5.Initialize(0, 0);
+	up5.Initialize(325, 300);
+	down5.Initialize(330, 440);
+
+	map6.Initialize(0, 0);
+	up6.Initialize(325, 375);
+	down6.Initialize(330, 450);
+	left6.Initialize(80, 410);
+	right6.Initialize(575, 410);
+
+	map7.Initialize(0, 0);
+	down7.Initialize(145, 150);
+	left7.Initialize(25, 400);
+	lcdTV7.Initialize(50, 220);
+	safeBox7.Initialize(230, 340);
+
+	map8.Initialize(0, 0);
+	down8.Initialize(320, 440);
+
+	clickToStart.Initialize(0, 0);
+}
+
+void CGameStateRun::MoveMap()
+{
+	map0.OnMove();
+
+	map1.OnMove();
+	down1.OnMove();
+
+	map2.OnMove();
+	up2.OnMove();
+	down2.OnMove();
+
+	map3.OnMove();
+	down3.OnMove();
+	left3.OnMove();
+	right3.OnMove();
+
+	map4.OnMove();
+	left4.OnMove();
+
+	map5.OnMove();
+	up5.OnMove();
+	down5.OnMove();
+
+	map6.OnMove();
+	up6.OnMove();
+	down6.OnMove();
+	left6.OnMove();
+	right6.OnMove();
+
+	map7.OnMove();
+	down7.OnMove();
+	left7.OnMove();
+	lcdTV7.OnMove();
+	safeBox7.OnMove();
+
+	map8.OnMove();
+	down8.OnMove();
+
+	clickToStart.OnMove();
+}
+
+void CGameStateRun::LoadMap()
+{
+	map0.LoadBitmap(IDB_MAP0);
+
+	map1.LoadBitmap(IDB_MAP1);
+	down1.LoadBitmap(IDB_DOWN1);
+
+	map2.LoadBitmap(IDB_MAP2);
+	up2.LoadBitmap(IDB_UP2);
+	down2.LoadBitmap(IDB_DOWN2);
+
+	map3.LoadBitmap(IDB_MAP3);
+	down3.LoadBitmap(IDB_DOWN3);
+	left3.LoadBitmap(IDB_LEFT3);
+	right3.LoadBitmap(IDB_RIGHT3);
+
+	map4.LoadBitmap(IDB_MAP4);
+	left4.LoadBitmap(IDB_LEFT4);
+
+	map5.LoadBitmap(IDB_MAP5);
+	up5.LoadBitmap(IDB_UP5);
+	down5.LoadBitmap(IDB_DOWN5);
+
+	map6.LoadBitmap(IDB_MAP6);
+	up6.LoadBitmap(IDB_UP6);
+	down6.LoadBitmap(IDB_DOWN6);
+	left6.LoadBitmap(IDB_LEFT6);
+	right6.LoadBitmap(IDB_RIGHT6);
+
+	map7.LoadBitmap(IDB_MAP7);
+	down7.LoadBitmap(IDB_DOWN7);
+	left7.LoadBitmap(IDB_LEFT7);
+	lcdTV7.LoadBitmap(IDB_LCDTV7);
+	safeBox7.LoadBitmap(IDB_SAFEBOX7);
+
+	map8.LoadBitmap(IDB_MAP8);
+	down8.LoadBitmap(IDB_DOWN8);
+
+	clickToStart.LoadBitmap(IDB_CLICKTOSTART);
+}
+
+void CGameStateRun::ShowMap()
+{
+	map0.OnShow();
+
+	map1.OnShow();
+	down1.OnShow();
+
+	map2.OnShow();
+	up2.OnShow();
+	down2.OnShow();
+
+	map3.OnShow();
+	down3.OnShow();
+	left3.OnShow();
+	right3.OnShow();
+
+	map4.OnShow();
+	left4.OnShow();
+
+	map5.OnShow();
+	up5.OnShow();
+	down5.OnShow();
+
+	map6.OnShow();
+	up6.OnShow();
+	down6.OnShow();
+	left6.OnShow();
+	right6.OnShow();
+
+	map7.OnShow();
+	down7.OnShow();
+	left7.OnShow();
+	lcdTV7.OnShow();
+	safeBox7.OnShow();
+
+	map8.OnShow();
+	down8.OnShow();
+
+	clickToStart.OnShow();
+}
+
+void CGameStateRun::MVMap1Left()
+{
+	map1.SetMovingLeft(true);
+	down1.SetMovingLeft(true);
+}
+
+void CGameStateRun::MVMap1Right()
+{
+	map1.SetMovingRight(true);
+	down1.SetMovingRight(true);
+}
+
+void CGameStateRun::MVMap2Left()
+{
+	map2.SetMovingLeft(true);
+	up2.SetMovingLeft(true);
+	down2.SetMovingLeft(true);
+}
+
+void CGameStateRun::MVMap2Right()
+{
+	map2.SetMovingRight(true);
+	up2.SetMovingRight(true);
+	down2.SetMovingRight(true);
+}
+
+void CGameStateRun::MVMap3Left()
+{
+	map3.SetMovingLeft(true);
+	down3.SetMovingLeft(true);
+	left3.SetMovingLeft(true);
+	right3.SetMovingLeft(true);
+}
+
+void CGameStateRun::MVMap3Right()
+{
+	map3.SetMovingRight(true);
+	down3.SetMovingRight(true);
+	left3.SetMovingRight(true);
+	right3.SetMovingRight(true);
+}
+
+void CGameStateRun::MVMap4Left()
+{
+	map4.SetMovingLeft(true);
+	left4.SetMovingLeft(true);
+}
+
+void CGameStateRun::MVMap4Right()
+{
+	map4.SetMovingRight(true);
+	left4.SetMovingRight(true);
+}
+
+void CGameStateRun::MVMap5Left()
+{
+	map5.SetMovingLeft(true);
+	up5.SetMovingLeft(true);
+	down5.SetMovingLeft(true);
+}
+
+void CGameStateRun::MVMap5Right()
+{
+	map5.SetMovingRight(true);
+	up5.SetMovingRight(true);
+	down5.SetMovingRight(true);
+}
+
+void CGameStateRun::MVMap6Left()
+{
+	map6.SetMovingLeft(true);
+	up6.SetMovingLeft(true);
+	down6.SetMovingLeft(true);
+	left6.SetMovingLeft(true);
+	right6.SetMovingLeft(true);
+}
+
+void CGameStateRun::MVMap6Right()
+{
+	map6.SetMovingRight(true);
+	up6.SetMovingRight(true);
+	down6.SetMovingRight(true);
+	left6.SetMovingRight(true);
+	right6.SetMovingRight(true);
+}
+
+void CGameStateRun::MVMap7Left()
+{
+	map7.SetMovingLeft(true);
+	down7.SetMovingLeft(true);
+	left7.SetMovingLeft(true);
+	lcdTV7.SetMovingLeft(true);
+	safeBox7.SetMovingLeft(true);
+}
+
+void CGameStateRun::MVMap7Right()
+{
+	map7.SetMovingRight(true);
+	down7.SetMovingRight(true);
+	left7.SetMovingRight(true);
+	lcdTV7.SetMovingRight(true);
+	safeBox7.SetMovingRight(true);
+}
+
+void CGameStateRun::MVMap8Left()
+{
+	map8.SetMovingLeft(true);
+	down8.SetMovingLeft(true);
+}
+
+void CGameStateRun::MVMap8Right()
+{
+	map8.SetMovingRight(true);
+	down8.SetMovingRight(true);
+}
+
+void CGameStateRun::MVClickToStartRight()
+{
+	clickToStart.SetMovingRight(true);
+}
+
 void CGameStateRun::OnBeginState()
 {
 	const int BALL_GAP = 90;
@@ -448,6 +750,7 @@ void CGameStateRun::OnBeginState()
 		ball[i].SetIsAlive(true);
 	}
 	eraser.Initialize();
+	InitMap();
 	background.SetTopLeft(BACKGROUND_X,0);				// 設定背景的起始座標
 	help.SetTopLeft(0, SIZE_Y - help.Height());			// 設定說明圖的起始座標
 	hits_left.SetInteger(HITS_LEFT);					// 指定剩下的撞擊數
@@ -491,6 +794,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	// 移動擦子
 	//
 	eraser.OnMove();
+	MoveMap();
 	//
 	// 判斷擦子是否碰到球
 	//
@@ -533,6 +837,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	for (i = 0; i < NUMBALLS; i++)	
 		ball[i].LoadBitmap();								// 載入第i個球的圖形
 	eraser.LoadBitmap();
+	LoadMap();
 	background.LoadBitmap(IDB_BACKGROUND);					// 載入背景的圖形
 	//
 	// 完成部分Loading動作，提高進度
@@ -591,12 +896,189 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
-	eraser.SetMovingLeft(true);
+//	eraser.SetMovingLeft(true);
+	if (mapNow == 0)
+	{
+		MVMap2Right();
+		MVMap3Right();
+		MVMap4Right();
+		MVMap5Right();
+		MVMap6Right();
+		MVMap7Right();
+		MVMap8Right();
+		MVClickToStartRight();
+		mapNow = 1;
+	}
+	else if (mapNow == 1)
+	{
+		if (point.x >= down1.GetX1() && point.x <= down1.GetX2() && point.y >= down1.GetY1() && point.y <= down1.GetY2())
+		{
+			MVMap2Left();
+			MVMap1Right();
+			mapNow = 2;
+		}
+	}
+	else if (mapNow == 2)
+	{
+		if (point.x >= up2.GetX1() && point.x <= up2.GetX2() && point.y >= up2.GetY1() && point.y <= up2.GetY2())
+		{
+			MVMap3Left();
+			MVMap2Right();
+			mapNow = 3;
+		}
+		else if (point.x >= down2.GetX1() && point.x <= down2.GetX2() && point.y >= down2.GetY1() && point.y <= down2.GetY2())
+		{
+			MVMap1Left();
+			MVMap2Right();
+			mapNow = 1;
+		}
+	}
+	else if (mapNow == 3)
+	{
+		if (point.x >= down3.GetX1() && point.x <= down3.GetX2() && point.y >= down3.GetY1() && point.y <= down3.GetY2())
+		{
+			MVMap2Left();
+			MVMap3Right();
+			mapNow = 2;
+		}
+		else if (point.x >= left3.GetX1() && point.x <= left3.GetX2() && point.y >= left3.GetY1() && point.y <= left3.GetY2())
+		{
+			MVMap4Left();
+			MVMap3Right();
+			mapNow = 4;
+		}
+		else if (point.x >= right3.GetX1() && point.x <= right3.GetX2() && point.y >= right3.GetY1() && point.y <= right3.GetY2())
+		{
+			MVMap5Left();
+			MVMap3Right();
+			mapNow = 5;
+		}
+	}
+	else if (mapNow == 4)
+	{
+		if (point.x >= left4.GetX1() && point.x <= left4.GetX2() && point.y >= left4.GetY1() && point.y <= left4.GetY2())
+		{
+			MVMap3Left();
+			MVMap4Right();
+			mapNow = 3;
+		}
+	}
+	else if (mapNow == 5)
+	{
+		if (point.x >= up5.GetX1() && point.x <= up5.GetX2() && point.y >= up5.GetY1() && point.y <= up5.GetY2())
+		{
+			MVMap6Left();
+			MVMap5Right();
+			mapNow = 6;
+		}
+		else if (point.x >= down5.GetX1() && point.x <= down5.GetX2() && point.y >= down5.GetY1() && point.y <= down5.GetY2())
+		{
+			MVMap3Left();
+			MVMap5Right();
+			mapNow = 3;
+		}
+	}
+	else if (mapNow == 6)
+	{
+		if (point.x >= down6.GetX1() && point.x <= down6.GetX2() && point.y >= down6.GetY1() && point.y <= down6.GetY2())
+		{
+			MVMap5Left();
+			MVMap6Right();
+			mapNow = 5;
+		}
+		else if (point.x >= left6.GetX1() && point.x <= left6.GetX2() && point.y >= left6.GetY1() && point.y <= left6.GetY2())
+		{
+			MVMap7Left();
+			MVMap6Right();
+			mapNow = 7;
+		}
+	}
+	else if (mapNow == 7)
+	{
+		if (point.x >= down7.GetX1() && point.x <= down7.GetX2() && point.y >= down7.GetY1() && point.y <= down7.GetY2())
+		{
+			MVMap8Left();
+			MVMap7Right();
+			mapNow = 8;
+		}
+		else if (point.x >= left7.GetX1() && point.x <= left7.GetX2() && point.y >= left7.GetY1() && point.y <= left7.GetY2())
+		{
+			MVMap6Left();
+			MVMap7Right();
+			mapNow = 6;
+		}
+	}
+	else if (mapNow == 8)
+	{
+		if (point.x >= down8.GetX1() && point.x <= down8.GetX2() && point.y >= down8.GetY1() && point.y <= down8.GetY2())
+		{
+			MVMap7Left();
+			MVMap8Right();
+			mapNow = 7;
+		}
+	}
 }
 
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
-	eraser.SetMovingLeft(false);
+//	eraser.SetMovingLeft(false);
+	map0.SetMovingLeft(false);
+    map1.SetMovingLeft(false);
+	down1.SetMovingLeft(false);
+    map2.SetMovingLeft(false);
+	up2.SetMovingLeft(false);
+	down2.SetMovingLeft(false);
+    map3.SetMovingLeft(false);
+	down3.SetMovingLeft(false);
+	left3.SetMovingLeft(false);
+	right3.SetMovingLeft(false);
+    map4.SetMovingLeft(false);
+	left4.SetMovingLeft(false);
+    map5.SetMovingLeft(false);
+	up5.SetMovingLeft(false);
+	down5.SetMovingLeft(false);
+    map6.SetMovingLeft(false);
+	up6.SetMovingLeft(false);
+	down6.SetMovingLeft(false);
+	left6.SetMovingLeft(false);
+	right6.SetMovingLeft(false);
+	map7.SetMovingLeft(false);
+	down7.SetMovingLeft(false);
+	left7.SetMovingLeft(false);
+	lcdTV7.SetMovingLeft(false);
+	safeBox7.SetMovingLeft(false);
+    map8.SetMovingLeft(false);
+	down8.SetMovingLeft(false);
+    clickToStart.SetMovingLeft(false);
+
+	map0.SetMovingRight(false);
+	map1.SetMovingRight(false);
+	down1.SetMovingRight(false);
+	map2.SetMovingRight(false);
+	up2.SetMovingRight(false);
+	down2.SetMovingRight(false);
+	map3.SetMovingRight(false);
+	down3.SetMovingRight(false);
+	left3.SetMovingRight(false);
+	right3.SetMovingRight(false);
+	map4.SetMovingRight(false);
+	left4.SetMovingRight(false);
+	map5.SetMovingRight(false);
+	up5.SetMovingRight(false);
+	down5.SetMovingRight(false);
+	map6.SetMovingRight(false);
+	up6.SetMovingRight(false);
+	down6.SetMovingRight(false);
+	left6.SetMovingRight(false);
+	right6.SetMovingRight(false);
+	map7.SetMovingRight(false);
+	down7.SetMovingRight(false);
+	left7.SetMovingRight(false);
+	lcdTV7.SetMovingRight(false);
+	safeBox7.SetMovingRight(false);
+	map8.SetMovingRight(false);
+	down8.SetMovingRight(false);
+	clickToStart.SetMovingRight(false);
 }
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -633,6 +1115,7 @@ void CGameStateRun::OnShow()
 //		ball[i].OnShow();				// 貼上第i號球
 //	bball.OnShow();						// 貼上彈跳的球
 //	eraser.OnShow();					// 貼上擦子
+	ShowMap();
 	//
 	//  貼上左上及右下角落的圖
 	//
