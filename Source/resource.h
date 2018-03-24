@@ -40,6 +40,34 @@
 #define IDB_BLUE                        159
 #define IDB_GREEN                       160
 #define IDB_BITMAP4                     161
+#define IDB_CLICKTOSTART                162
+#define IDB_DOWN1                       163
+#define IDB_DOWN2                       164
+#define IDB_DOWN3                       165
+#define IDB_BITMAP9                     166
+#define IDB_DOWN5                       166
+#define IDB_DOWN6                       167
+#define IDB_DOWN7                       168
+#define IDB_DOWN8                       169
+#define IDB_LCDTV7                      170
+#define IDB_LEFT3                       171
+#define IDB_LEFT4                       172
+#define IDB_LEFT6                       173
+#define IDB_LEFT7                       174
+#define IDB_MAP2                        175
+#define IDB_MAP4                        176
+#define IDB_MAP5                        177
+#define IDB_MAP6                        178
+#define IDB_MAP7                        179
+#define IDB_MAP8                        180
+#define IDB_RIGHT3                      181
+#define IDB_RIGHT6                      182
+#define IDB_SAFEBOX7                    183
+#define IDB_UP2                         184
+#define IDB_UP5                         185
+#define IDB_UP6                         186
+#define IDB_MAP1                        187
+#define IDB_MAP3                        188
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -52,7 +80,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        162
+#define _APS_NEXT_RESOURCE_VALUE        189
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

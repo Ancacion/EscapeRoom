@@ -114,6 +114,60 @@ IDB_GREEN               BITMAP                  "..\\res\\bitmap5.bmp"
 
 IDB_BITMAP4             BITMAP                  "..\\res\\bmp00002.bmp"
 
+IDB_CLICKTOSTART        BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\clickToStart.bmp"
+
+IDB_DOWN1               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\down1.bmp"
+
+IDB_DOWN2               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\down2.bmp"
+
+IDB_DOWN3               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\down3.bmp"
+
+IDB_DOWN5               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\down5.bmp"
+
+IDB_DOWN6               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\down6.bmp"
+
+IDB_DOWN7               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\down7.bmp"
+
+IDB_DOWN8               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\down8.bmp"
+
+IDB_LCDTV7              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\lcdTV7.bmp"
+
+IDB_LEFT3               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\left3.bmp"
+
+IDB_LEFT4               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\left4.bmp"
+
+IDB_LEFT6               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\left6.bmp"
+
+IDB_LEFT7               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\left7.bmp"
+
+IDB_MAP2                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map2.bmp"
+
+IDB_MAP4                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map4.bmp"
+
+IDB_MAP5                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map5.bmp"
+
+IDB_MAP6                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map6.bmp"
+
+IDB_MAP7                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map7.bmp"
+
+IDB_MAP8                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map8.bmp"
+
+IDB_RIGHT3              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\right3.bmp"
+
+IDB_RIGHT6              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\right6.bmp"
+
+IDB_SAFEBOX7            BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\safeBox7.bmp"
+
+IDB_UP2                 BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\up2.bmp"
+
+IDB_UP5                 BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\up5.bmp"
+
+IDB_UP6                 BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\up6.bmp"
+
+IDB_MAP1                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map1.bmp"
+
+IDB_MAP3                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map3.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

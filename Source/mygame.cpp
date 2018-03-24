@@ -625,23 +625,23 @@ void CGameStateRun::OnShow()
 	//  貼上背景圖、撞擊數、球、擦子、彈跳的球
 	//
 	
-	background.ShowBitmap();			// 貼上背景圖
-	help.ShowBitmap();					// 貼上說明圖
-	gamemap.OnShow();
-	hits_left.ShowBitmap();
-	for (int i=0; i < NUMBALLS; i++)
-		ball[i].OnShow();				// 貼上第i號球
-	bball.OnShow();						// 貼上彈跳的球
-	eraser.OnShow();					// 貼上擦子
+//	background.ShowBitmap();			// 貼上背景圖
+//	help.ShowBitmap();					// 貼上說明圖
+//	gamemap.OnShow();
+//	hits_left.ShowBitmap();
+//	for (int i=0; i < NUMBALLS; i++)
+//		ball[i].OnShow();				// 貼上第i號球
+//	bball.OnShow();						// 貼上彈跳的球
+//	eraser.OnShow();					// 貼上擦子
 	//
 	//  貼上左上及右下角落的圖
 	//
-	corner.SetTopLeft(0,0);
-	corner.ShowBitmap();
-	corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
-	corner.ShowBitmap();
-	bitmap3.ShowBitmap();
-	c_practice.OnShow();
+//	corner.SetTopLeft(0,0);
+//	corner.ShowBitmap();
+//	corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
+//	corner.ShowBitmap();
+//	bitmap3.ShowBitmap();
+//	c_practice.OnShow();
 }
 CPractice::CPractice()
 {

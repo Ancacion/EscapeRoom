@@ -164,5 +164,86 @@
     <Image Include="res\bmp00002.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\clickToStart.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\down1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\down2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\down3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\down5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\down6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\down7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\down8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\lcdTV7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\left3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\left4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\left6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\left7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map4.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\right3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\right6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\safeBox7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\up2.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\up5.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\up6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map3.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
