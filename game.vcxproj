@@ -317,9 +317,11 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="RES\bag.bmp" />
     <Image Include="res\bitmap3.bmp" />
     <Image Include="res\bitmap4.bmp" />
     <Image Include="res\bitmap5.bmp" />
+    <Image Include="RES\black1.bmp" />
     <Image Include="res\bmp00001.bmp" />
     <Image Include="res\bmp00002.bmp" />
     <Image Include="RES\clickToStart.bmp" />

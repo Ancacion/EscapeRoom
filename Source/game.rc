@@ -170,6 +170,10 @@ IDB_MAP3                BITMAP                  "C:\\Users\\yuqingyun\\Documents
 
 IDB_MAP0                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map0.bmp"
 
+IDB_BAG                 BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\bag.bmp"
+
+IDB_BLACK1              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\black1.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

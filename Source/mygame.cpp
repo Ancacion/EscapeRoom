@@ -485,6 +485,9 @@ void CGameStateRun::InitMap()
 	map8.Initialize(0, 0);
 	down8.Initialize(320, 440);
 
+	black1.Initialize(0, 0);
+
+	bag.Initialize(560, 0);
 	clickToStart.Initialize(0, 0);
 }
 
@@ -526,6 +529,9 @@ void CGameStateRun::MoveMap()
 	map8.OnMove();
 	down8.OnMove();
 
+	black1.OnMove();
+
+	bag.OnMove();
 	clickToStart.OnMove();
 }
 
@@ -567,6 +573,9 @@ void CGameStateRun::LoadMap()
 	map8.LoadBitmap(IDB_MAP8);
 	down8.LoadBitmap(IDB_DOWN8);
 
+	black1.LoadBitmap(IDB_BLACK1);
+
+	bag.LoadBitmap(IDB_BAG);
 	clickToStart.LoadBitmap(IDB_CLICKTOSTART);
 }
 
@@ -608,6 +617,9 @@ void CGameStateRun::ShowMap()
 	map8.OnShow();
 	down8.OnShow();
 
+	black1.OnShow();
+
+	bag.OnShow();
 	clickToStart.OnShow();
 }
 
@@ -730,6 +742,16 @@ void CGameStateRun::MVMap8Right()
 void CGameStateRun::MVClickToStartRight()
 {
 	clickToStart.SetMovingRight(true);
+}
+
+void CGameStateRun::MVBlack1Left()
+{
+	black1.SetMovingLeft(true);
+}
+
+void CGameStateRun::MVBlack1Right()
+{
+	black1.SetMovingRight(true);
 }
 
 void CGameStateRun::OnBeginState()
@@ -906,8 +928,20 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 		MVMap6Right();
 		MVMap7Right();
 		MVMap8Right();
+		MVBlack1Right();
 		MVClickToStartRight();
 		mapNow = 1;
+	}
+	else if (point.x >= bag.GetX1() && point.x <= bag.GetX2() && point.y >= bag.GetY1() && point.y <= bag.GetY2())
+	{
+		if (mapTemp == -1)
+			MVBlack1Left();
+		else
+			MVBlack1Right();
+
+		int temp = mapNow;
+		mapNow = mapTemp;
+		mapTemp = temp;
 	}
 	else if (mapNow == 1)
 	{
@@ -1050,6 +1084,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
     map8.SetMovingLeft(false);
 	down8.SetMovingLeft(false);
     clickToStart.SetMovingLeft(false);
+	black1.SetMovingLeft(false);
 
 	map0.SetMovingRight(false);
 	map1.SetMovingRight(false);
@@ -1079,6 +1114,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	map8.SetMovingRight(false);
 	down8.SetMovingRight(false);
 	clickToStart.SetMovingRight(false);
+	black1.SetMovingRight(false);
 }
 
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作

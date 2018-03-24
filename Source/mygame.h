@@ -224,6 +224,8 @@ public:
 	void MVMap8Left();
 	void MVMap8Right();
 	void MVClickToStartRight();
+	void MVBlack1Left();
+	void MVBlack1Right();
 protected:
 	CPractice c_practice;
 	void OnMove();									// ²¾°Ê¹CÀ¸¤¸¯À
@@ -250,7 +252,9 @@ private:
 	CEraser map7, down7, left7, lcdTV7, safeBox7;
 	CEraser map8, down8;
 	CEraser clickToStart;
+	CEraser bag, black1;
 	int mapNow = 0;
+	int mapTemp = -1;
 };
 
 /////////////////////////////////////////////////////////////////////////////

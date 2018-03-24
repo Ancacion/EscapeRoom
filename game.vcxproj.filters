@@ -248,5 +248,11 @@
     <Image Include="RES\map0.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\bag.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\black1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
