@@ -254,5 +254,35 @@
     <Image Include="RES\black1.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\ax.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\copperKey.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cpu.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\goldKey.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\gpu.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\memory.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\shard.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\silverKey.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\slad.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\tap.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

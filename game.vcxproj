@@ -317,6 +317,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="RES\ax.bmp" />
     <Image Include="RES\bag.bmp" />
     <Image Include="res\bitmap3.bmp" />
     <Image Include="res\bitmap4.bmp" />
@@ -325,6 +326,8 @@
     <Image Include="res\bmp00001.bmp" />
     <Image Include="res\bmp00002.bmp" />
     <Image Include="RES\clickToStart.bmp" />
+    <Image Include="RES\copperKey.bmp" />
+    <Image Include="RES\cpu.bmp" />
     <Image Include="RES\down1.bmp" />
     <Image Include="RES\down2.bmp" />
     <Image Include="RES\down3.bmp" />
@@ -332,6 +335,8 @@
     <Image Include="RES\down6.bmp" />
     <Image Include="RES\down7.bmp" />
     <Image Include="RES\down8.bmp" />
+    <Image Include="RES\goldKey.bmp" />
+    <Image Include="RES\gpu.bmp" />
     <Image Include="RES\lcdTV7.bmp" />
     <Image Include="RES\left3.bmp" />
     <Image Include="RES\left4.bmp" />
@@ -346,9 +351,14 @@
     <Image Include="RES\map6.bmp" />
     <Image Include="RES\map7.bmp" />
     <Image Include="RES\map8.bmp" />
+    <Image Include="RES\memory.bmp" />
     <Image Include="RES\right3.bmp" />
     <Image Include="RES\right6.bmp" />
     <Image Include="RES\safeBox7.bmp" />
+    <Image Include="RES\shard.bmp" />
+    <Image Include="RES\silverKey.bmp" />
+    <Image Include="RES\slad.bmp" />
+    <Image Include="RES\tap.bmp" />
     <Image Include="RES\up2.bmp" />
     <Image Include="RES\up5.bmp" />
     <Image Include="RES\up6.bmp" />

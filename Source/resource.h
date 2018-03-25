@@ -70,8 +70,18 @@
 #define IDB_MAP3                        188
 #define IDB_MAP0                        189
 #define IDB_BAG                         191
-#define IDB_BITMAP5                     192
 #define IDB_BLACK1                      192
+#define IDB_AX                          193
+#define IDB_COPPERKEY                   194
+#define IDB_CPU                         195
+#define IDB_GOLDKEY                     196
+#define IDB_GPU                         197
+#define IDB_MEMORY                      198
+#define IDB_SHARD                       199
+#define IDB_SILVERKEY                   200
+#define IDB_SLAD                        201
+#define IDB_BITMAP15                    202
+#define IDB_TAP                         202
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -84,7 +94,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        193
+#define _APS_NEXT_RESOURCE_VALUE        203
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

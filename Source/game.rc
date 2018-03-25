@@ -174,6 +174,26 @@ IDB_BAG                 BITMAP                  "C:\\Users\\yuqingyun\\Documents
 
 IDB_BLACK1              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\black1.bmp"
 
+IDB_AX                  BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\ax.bmp"
+
+IDB_COPPERKEY           BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\copperKey.bmp"
+
+IDB_CPU                 BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\cpu.bmp"
+
+IDB_GOLDKEY             BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\goldKey.bmp"
+
+IDB_GPU                 BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\gpu.bmp"
+
+IDB_MEMORY              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\memory.bmp"
+
+IDB_SHARD               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\shard.bmp"
+
+IDB_SILVERKEY           BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\silverKey.bmp"
+
+IDB_SLAD                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\slad.bmp"
+
+IDB_TAP                 BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\tap.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
