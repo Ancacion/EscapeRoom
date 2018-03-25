@@ -252,9 +252,16 @@ private:
 	CEraser map7, down7, left7, lcdTV7, safeBox7;
 	CEraser map8, down8;
 	CEraser clickToStart;
-	CEraser bag, black1;
+	CEraser black1, ax, cpu, gpu, goldKey, silverKey, copperKey, memory, bag, shard, slad, tap;
+	int objNow = 7;
 	int mapNow = 0;
 	int mapTemp = -1;
+	int bagArray[48] = { 1, 1, 1, 1, 1, 1, 1, 1, 
+		                 1, 1, 1, 1, 1, 1, 1, 1, 
+	                     1, 1, 1, 1, 1, 1, 1, 1, 
+	                     1, 1, 1, 1, 1, 1, 1, 1, 
+	                     1, 1, 1, 1, 1, 1, 1, 1, 
+	                     1, 1, 1, 1, 1, 1, 1, 1 };
 };
 
 /////////////////////////////////////////////////////////////////////////////
