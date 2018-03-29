@@ -284,5 +284,11 @@
     <Image Include="RES\tap.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\message6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\shard6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

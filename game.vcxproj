@@ -352,10 +352,12 @@
     <Image Include="RES\map7.bmp" />
     <Image Include="RES\map8.bmp" />
     <Image Include="RES\memory.bmp" />
+    <Image Include="RES\message6.bmp" />
     <Image Include="RES\right3.bmp" />
     <Image Include="RES\right6.bmp" />
     <Image Include="RES\safeBox7.bmp" />
     <Image Include="RES\shard.bmp" />
+    <Image Include="RES\shard6.bmp" />
     <Image Include="RES\silverKey.bmp" />
     <Image Include="RES\slad.bmp" />
     <Image Include="RES\tap.bmp" />

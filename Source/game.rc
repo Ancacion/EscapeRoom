@@ -194,6 +194,10 @@ IDB_SLAD                BITMAP                  "C:\\Users\\yuqingyun\\Documents
 
 IDB_TAP                 BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\tap.bmp"
 
+IDB_MESSAGE6            BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\message6.bmp"
+
+IDB_SHARD6              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\shard6.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

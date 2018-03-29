@@ -475,6 +475,8 @@ void CGameStateRun::InitMap()
 	down6.Initialize(330, 450);
 	left6.Initialize(80, 410);
 	right6.Initialize(575, 410);
+	message6.Initialize(50, 220);
+	shard6.Initialize(540, 340);
 
 	map7.Initialize(0, 0);
 	down7.Initialize(145, 150);
@@ -529,6 +531,8 @@ void CGameStateRun::MoveMap()
 	down6.OnMove();
 	left6.OnMove();
 	right6.OnMove();
+	message6.OnMove();
+	shard6.OnMove();
 
 	map7.OnMove();
 	down7.OnMove();
@@ -583,6 +587,8 @@ void CGameStateRun::LoadMap()
 	down6.LoadBitmap(IDB_DOWN6);
 	left6.LoadBitmap(IDB_LEFT6);
 	right6.LoadBitmap(IDB_RIGHT6);
+	message6.LoadBitmap(IDB_MESSAGE6);
+	shard6.LoadBitmap(IDB_SHARD6);
 
 	map7.LoadBitmap(IDB_MAP7);
 	down7.LoadBitmap(IDB_DOWN7);
@@ -637,6 +643,8 @@ void CGameStateRun::ShowMap()
 	down6.OnShow();
 	left6.OnShow();
 	right6.OnShow();
+	message6.OnShow();
+	shard6.OnShow();
 
 	map7.OnShow();
 	down7.OnShow();
@@ -738,6 +746,9 @@ void CGameStateRun::MVMap6Left()
 	down6.SetMovingLeft(true);
 	left6.SetMovingLeft(true);
 	right6.SetMovingLeft(true);
+	message6.SetMovingLeft(true);
+	if (bagArray[8] == 0)
+	    shard6.SetMovingLeft(true);
 }
 
 void CGameStateRun::MVMap6Right()
@@ -747,6 +758,8 @@ void CGameStateRun::MVMap6Right()
 	down6.SetMovingRight(true);
 	left6.SetMovingRight(true);
 	right6.SetMovingRight(true);
+	message6.SetMovingRight(true);
+	shard6.SetMovingRight(true);
 }
 
 void CGameStateRun::MVMap7Left()
@@ -1131,6 +1144,11 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 			MVMap6Right();
 			mapNow = 7;
 		}
+		else if (point.x >= shard6.GetX1() && point.x <= shard6.GetX2() && point.y >= shard6.GetY1() && point.y <= shard6.GetY2())
+		{
+			shard6.SetMovingRight(true);
+			bagArray[8] = 1;
+		}
 	}
 	else if (mapNow == 7)
 	{
@@ -1181,6 +1199,8 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	down6.SetMovingLeft(false);
 	left6.SetMovingLeft(false);
 	right6.SetMovingLeft(false);
+	message6.SetMovingLeft(false);
+	shard6.SetMovingLeft(false);
 	map7.SetMovingLeft(false);
 	down7.SetMovingLeft(false);
 	left7.SetMovingLeft(false);
@@ -1221,6 +1241,8 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	down6.SetMovingRight(false);
 	left6.SetMovingRight(false);
 	right6.SetMovingRight(false);
+	message6.SetMovingRight(false);
+	shard6.SetMovingRight(false);
 	map7.SetMovingRight(false);
 	down7.SetMovingRight(false);
 	left7.SetMovingRight(false);

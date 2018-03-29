@@ -248,7 +248,7 @@ private:
 	CEraser map3, down3, left3, right3;
 	CEraser map4, left4;
 	CEraser map5, up5, down5;
-	CEraser map6, up6, down6, left6, right6;
+	CEraser map6, up6, down6, left6, right6, message6, shard6;
 	CEraser map7, down7, left7, lcdTV7, safeBox7;
 	CEraser map8, down8;
 	CEraser clickToStart;
