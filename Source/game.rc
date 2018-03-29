@@ -224,6 +224,16 @@ IDB_UP8                 BITMAP                  "C:\\Users\\yuqingyun\\Documents
 
 IDB_CLOCK6              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\clock6.bmp"
 
+IDB_CODE9               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\code9.bmp"
+
+IDB_CPU9                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\cpu9.bmp"
+
+IDB_DOWN9               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\down9.bmp"
+
+IDB_MAP9                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map9.bmp"
+
+IDB_SAFEBOX9            BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\safeBox9.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

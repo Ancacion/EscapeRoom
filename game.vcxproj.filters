@@ -329,5 +329,20 @@
     <Image Include="RES\clock6.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\code9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\cpu9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\down9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\safeBox9.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
