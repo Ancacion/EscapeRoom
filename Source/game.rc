@@ -246,6 +246,18 @@ IDB_SHARD10             BITMAP                  "C:\\Users\\yuqingyun\\Documents
 
 IDB_SHARDBAG10          BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\shardBag10.bmp"
 
+IDB_DOWN11              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\down11.bmp"
+
+IDB_LEFT11              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\left11.bmp"
+
+IDB_MAP11               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map11.bmp"
+
+IDB_RIGHT11             BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\right11.bmp"
+
+IDB_LEFT12              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\left12.bmp"
+
+IDB_MAP12               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map12.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

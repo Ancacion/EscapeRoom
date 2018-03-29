@@ -362,5 +362,23 @@
     <Image Include="RES\shardBag10.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\down11.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\left11.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map11.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\right11.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\left12.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map12.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
