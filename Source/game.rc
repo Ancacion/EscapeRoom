@@ -210,6 +210,20 @@ IDB_SHARDBAG7           BITMAP                  "C:\\Users\\yuqingyun\\Documents
 
 IDB_TAP7                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\tap7.bmp"
 
+IDB_BOX8                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\box8.bmp"
+
+IDB_GPU8                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\gpu8.bmp"
+
+IDB_LEFT8               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\left8.bmp"
+
+IDB_MESSAGE8            BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\message8.bmp"
+
+IDB_RIGHT8              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\right8.bmp"
+
+IDB_UP8                 BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\up8.bmp"
+
+IDB_CLOCK6              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\clock6.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

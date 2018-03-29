@@ -308,5 +308,26 @@
     <Image Include="RES\tap7.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\box8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\gpu8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\left8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\message8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\right8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\up8.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\clock6.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

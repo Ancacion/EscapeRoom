@@ -248,9 +248,9 @@ private:
 	CEraser map3, down3, left3, right3;
 	CEraser map4, left4;
 	CEraser map5, up5, down5;
-	CEraser map6, up6, down6, left6, right6, message6, shard6;
+	CEraser map6, up6, down6, left6, right6, message6, shard6, clock6;
 	CEraser map7, down7, left7, lcdTV7, safeBox7, clue7, tap7, shard7, draw7;
-	CEraser map8, down8;
+	CEraser map8, down8, left8, box8, message8, gpu8;
 	CEraser clickToStart;
 	CEraser black1, ax, cpu, gpu, goldKey, silverKey, copperKey, memory, bag, shard, slad, tap, shardBag7, draw;
 	int objNow = 7;

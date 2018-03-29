@@ -477,6 +477,7 @@ void CGameStateRun::InitMap()
 	right6.Initialize(575, 410);
 	message6.Initialize(50, 220);
 	shard6.Initialize(540, 340);
+	clock6.Initialize(300, 60);
 
 	map7.Initialize(0, 0);
 	down7.Initialize(145, 150);
@@ -490,6 +491,10 @@ void CGameStateRun::InitMap()
 
 	map8.Initialize(0, 0);
 	down8.Initialize(320, 440);
+	left8.Initialize(125, 350);
+	box8.Initialize(480, 320);
+	message8.Initialize(10, 250);
+	gpu8.Initialize(25, 400);
 
 	black1.Initialize(0, 0);
 	ax.Initialize(0, 0);
@@ -539,6 +544,7 @@ void CGameStateRun::MoveMap()
 	right6.OnMove();
 	message6.OnMove();
 	shard6.OnMove();
+	clock6.OnMove();
 
 	map7.OnMove();
 	down7.OnMove();
@@ -552,6 +558,10 @@ void CGameStateRun::MoveMap()
 
 	map8.OnMove();
 	down8.OnMove();
+	left8.OnMove();
+	box8.OnMove();
+	message8.OnMove();
+	gpu8.OnMove();
 
 	black1.OnMove();
 	ax.OnMove();
@@ -601,6 +611,7 @@ void CGameStateRun::LoadMap()
 	right6.LoadBitmap(IDB_RIGHT6);
 	message6.LoadBitmap(IDB_MESSAGE6);
 	shard6.LoadBitmap(IDB_SHARD6);
+	clock6.LoadBitmap(IDB_CLOCK6);
 
 	map7.LoadBitmap(IDB_MAP7);
 	down7.LoadBitmap(IDB_DOWN7);
@@ -614,6 +625,10 @@ void CGameStateRun::LoadMap()
 
 	map8.LoadBitmap(IDB_MAP8);
 	down8.LoadBitmap(IDB_DOWN8);
+	left8.LoadBitmap(IDB_LEFT8);
+	box8.LoadBitmap(IDB_BOX8);
+	message8.LoadBitmap(IDB_MESSAGE8);
+	gpu8.LoadBitmap(IDB_GPU8);
 
 	black1.LoadBitmap(IDB_BLACK1);
 	ax.LoadBitmap(IDB_AX);
@@ -663,6 +678,7 @@ void CGameStateRun::ShowMap()
 	right6.OnShow();
 	message6.OnShow();
 	shard6.OnShow();
+	clock6.OnShow();
 
 	map7.OnShow();
 	down7.OnShow();
@@ -676,6 +692,10 @@ void CGameStateRun::ShowMap()
 
 	map8.OnShow();
 	down8.OnShow();
+	left8.OnShow();
+	box8.OnShow();
+	message8.OnShow();
+	gpu8.OnShow();
 
 	black1.OnShow();
 	ax.OnShow();
@@ -773,6 +793,7 @@ void CGameStateRun::MVMap6Left()
 	message6.SetMovingLeft(true);
 	if (bagArray[8] == 0)
 	    shard6.SetMovingLeft(true);
+	clock6.SetMovingLeft(true);
 }
 
 void CGameStateRun::MVMap6Right()
@@ -784,6 +805,7 @@ void CGameStateRun::MVMap6Right()
 	right6.SetMovingRight(true);
 	message6.SetMovingRight(true);
 	shard6.SetMovingRight(true);
+	clock6.SetMovingRight(true);
 }
 
 void CGameStateRun::MVMap7Left()
@@ -819,12 +841,21 @@ void CGameStateRun::MVMap8Left()
 {
 	map8.SetMovingLeft(true);
 	down8.SetMovingLeft(true);
+	left8.SetMovingLeft(true);
+	box8.SetMovingLeft(true);
+	message8.SetMovingLeft(true);
+	if (bagArray[2] == 0)
+		gpu8.SetMovingLeft(true);
 }
 
 void CGameStateRun::MVMap8Right()
 {
 	map8.SetMovingRight(true);
 	down8.SetMovingRight(true);
+	left8.SetMovingRight(true);
+	box8.SetMovingRight(true);
+	message8.SetMovingRight(true);
+	gpu8.SetMovingRight(true);
 }
 
 void CGameStateRun::MVClickToStartRight()
@@ -1231,6 +1262,11 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 			MVMap8Right();
 			mapNow = 7;
 		}
+		else if (point.x >= gpu8.GetX1() && point.x <= gpu8.GetX2() && point.y >= gpu8.GetY1() && point.y <= gpu8.GetY2())
+		{
+			gpu8.SetMovingRight(true);
+			bagArray[2] = 1;
+		}
 	}
 }
 
@@ -1259,6 +1295,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	right6.SetMovingLeft(false);
 	message6.SetMovingLeft(false);
 	shard6.SetMovingLeft(false);
+	clock6.SetMovingLeft(false);
 	map7.SetMovingLeft(false);
 	down7.SetMovingLeft(false);
 	left7.SetMovingLeft(false);
@@ -1270,6 +1307,10 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	draw7.SetMovingLeft(false);
     map8.SetMovingLeft(false);
 	down8.SetMovingLeft(false);
+	left8.SetMovingLeft(false);
+	box8.SetMovingLeft(false);
+	message8.SetMovingLeft(false);
+	gpu8.SetMovingLeft(false);
 	black1.SetMovingLeft(false);
 	ax.SetMovingLeft(false);
 	cpu.SetMovingLeft(false);
@@ -1307,6 +1348,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	right6.SetMovingRight(false);
 	message6.SetMovingRight(false);
 	shard6.SetMovingRight(false);
+	clock6.SetMovingRight(false);
 	map7.SetMovingRight(false);
 	down7.SetMovingRight(false);
 	left7.SetMovingRight(false);
@@ -1318,6 +1360,10 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	draw7.SetMovingRight(false);
 	map8.SetMovingRight(false);
 	down8.SetMovingRight(false);
+	left8.SetMovingRight(false);
+	box8.SetMovingRight(false);
+	message8.SetMovingRight(false);
+	gpu8.SetMovingRight(false);
 	black1.SetMovingRight(false);
 	ax.SetMovingRight(false);
 	cpu.SetMovingRight(false);

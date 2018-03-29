@@ -89,8 +89,15 @@
 #define IDB_DRAW7                       207
 #define IDB_SHARD7                      208
 #define IDB_SHARDBAG7                   209
-#define IDB_BITMAP11                    210
 #define IDB_TAP7                        210
+#define IDB_BOX8                        211
+#define IDB_GPU8                        212
+#define IDB_LEFT8                       213
+#define IDB_MESSAGE8                    214
+#define IDB_RIGHT8                      215
+#define IDB_UP8                         216
+#define IDB_BITMAP5                     217
+#define IDB_CLOCK6                      217
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
@@ -103,7 +110,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        211
+#define _APS_NEXT_RESOURCE_VALUE        218
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101

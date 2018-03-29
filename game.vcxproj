@@ -325,7 +325,9 @@
     <Image Include="RES\black1.bmp" />
     <Image Include="res\bmp00001.bmp" />
     <Image Include="res\bmp00002.bmp" />
+    <Image Include="RES\box8.bmp" />
     <Image Include="RES\clickToStart.bmp" />
+    <Image Include="RES\clock6.bmp" />
     <Image Include="RES\clue7.bmp" />
     <Image Include="RES\copperKey.bmp" />
     <Image Include="RES\cpu.bmp" />
@@ -340,11 +342,13 @@
     <Image Include="RES\draw7.bmp" />
     <Image Include="RES\goldKey.bmp" />
     <Image Include="RES\gpu.bmp" />
+    <Image Include="RES\gpu8.bmp" />
     <Image Include="RES\lcdTV7.bmp" />
     <Image Include="RES\left3.bmp" />
     <Image Include="RES\left4.bmp" />
     <Image Include="RES\left6.bmp" />
     <Image Include="RES\left7.bmp" />
+    <Image Include="RES\left8.bmp" />
     <Image Include="RES\map0.bmp" />
     <Image Include="RES\map1.bmp" />
     <Image Include="RES\map2.bmp" />
@@ -356,8 +360,10 @@
     <Image Include="RES\map8.bmp" />
     <Image Include="RES\memory.bmp" />
     <Image Include="RES\message6.bmp" />
+    <Image Include="RES\message8.bmp" />
     <Image Include="RES\right3.bmp" />
     <Image Include="RES\right6.bmp" />
+    <Image Include="RES\right8.bmp" />
     <Image Include="RES\safeBox7.bmp" />
     <Image Include="RES\shard.bmp" />
     <Image Include="RES\shard6.bmp" />
@@ -370,6 +376,7 @@
     <Image Include="RES\up2.bmp" />
     <Image Include="RES\up5.bmp" />
     <Image Include="RES\up6.bmp" />
+    <Image Include="RES\up8.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
