@@ -318,6 +318,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="RES\ax.bmp" />
+    <Image Include="RES\ax14.bmp" />
     <Image Include="RES\bag.bmp" />
     <Image Include="res\bitmap3.bmp" />
     <Image Include="res\bitmap4.bmp" />
@@ -335,6 +336,8 @@
     <Image Include="RES\cpu9.bmp" />
     <Image Include="RES\down1.bmp" />
     <Image Include="RES\down11.bmp" />
+    <Image Include="RES\down13.bmp" />
+    <Image Include="RES\down14.bmp" />
     <Image Include="RES\down2.bmp" />
     <Image Include="RES\down3.bmp" />
     <Image Include="RES\down5.bmp" />
@@ -361,6 +364,8 @@
     <Image Include="RES\map10.bmp" />
     <Image Include="RES\map11.bmp" />
     <Image Include="RES\map12.bmp" />
+    <Image Include="RES\map13.bmp" />
+    <Image Include="RES\map14.bmp" />
     <Image Include="RES\map2.bmp" />
     <Image Include="RES\map3.bmp" />
     <Image Include="RES\map4.bmp" />
@@ -372,9 +377,12 @@
     <Image Include="RES\memory.bmp" />
     <Image Include="RES\memory10.bmp" />
     <Image Include="RES\message10.bmp" />
+    <Image Include="RES\message14.bmp" />
     <Image Include="RES\message6.bmp" />
     <Image Include="RES\message8.bmp" />
+    <Image Include="RES\monitor14.bmp" />
     <Image Include="RES\right11.bmp" />
+    <Image Include="RES\right13.bmp" />
     <Image Include="RES\right3.bmp" />
     <Image Include="RES\right6.bmp" />
     <Image Include="RES\right8.bmp" />

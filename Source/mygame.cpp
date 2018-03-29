@@ -516,6 +516,16 @@ void CGameStateRun::InitMap()
 	map12.Initialize(0, 0);
 	left12.Initialize(80, 410);
 
+	map13.Initialize(0, 0);
+	down13.Initialize(430, 50);
+	right13.Initialize(575, 410);
+
+	map14.Initialize(0, 0);
+	down14.Initialize(315, 450);
+	ax14.Initialize(450, 280);
+	message14.Initialize(160, 300);
+	monitor14.Initialize(340, 175);
+
 	black1.Initialize(0, 0);
 	ax.Initialize(0, 0);
 	cpu.Initialize(80, 0);
@@ -603,6 +613,16 @@ void CGameStateRun::MoveMap()
 
 	map12.OnMove();
 	left12.OnMove();
+
+	map13.OnMove();
+	down13.OnMove();
+	right13.OnMove();
+
+	map14.OnMove();
+	down14.OnMove();
+	ax14.OnMove();
+	message14.OnMove();
+	monitor14.OnMove();
 
 	black1.OnMove();
 	ax.OnMove();
@@ -692,6 +712,16 @@ void CGameStateRun::LoadMap()
 	map12.LoadBitmap(IDB_MAP12);
 	left12.LoadBitmap(IDB_LEFT12);
 
+	map13.LoadBitmap(IDB_MAP13);
+	down13.LoadBitmap(IDB_DOWN13);
+	right13.LoadBitmap(IDB_RIGHT13);
+
+	map14.LoadBitmap(IDB_MAP14);
+	down14.LoadBitmap(IDB_DOWN14);
+	ax14.LoadBitmap(IDB_AX14);
+	message14.LoadBitmap(IDB_MESSAGE14);
+	monitor14.LoadBitmap(IDB_MONITOR14);
+
 	black1.LoadBitmap(IDB_BLACK1);
 	ax.LoadBitmap(IDB_AX);
 	cpu.LoadBitmap(IDB_CPU);
@@ -777,9 +807,18 @@ void CGameStateRun::ShowMap()
 	left11.OnShow();
 	right11.OnShow();
 
-
 	map12.OnShow();
 	left12.OnShow();
+
+	map13.OnShow();
+	down13.OnShow();
+	right13.OnShow();
+
+	map14.OnShow();
+	down14.OnShow();
+	ax14.OnShow();
+	message14.OnShow();
+	monitor14.OnShow();
 
 	black1.OnShow();
 	ax.OnShow();
@@ -1008,6 +1047,39 @@ void CGameStateRun::MVMap12Right()
 {
 	map12.SetMovingRight(true);
 	left12.SetMovingRight(true);
+}
+
+void CGameStateRun::MVMap13Left()
+{
+	map13.SetMovingLeft(true);
+	down13.SetMovingLeft(true);
+	right13.SetMovingLeft(true);
+}
+
+void CGameStateRun::MVMap13Right()
+{
+	map13.SetMovingRight(true);
+	down13.SetMovingRight(true);
+	right13.SetMovingRight(true);
+}
+
+void CGameStateRun::MVMap14Left()
+{
+	map14.SetMovingLeft(true);
+	down14.SetMovingLeft(true);
+	if (bagArray[0] == 0)
+	    ax14.SetMovingLeft(true);
+	message14.SetMovingLeft(true);
+	monitor14.SetMovingLeft(true);
+}
+
+void CGameStateRun::MVMap14Right()
+{
+	map14.SetMovingRight(true);
+	down14.SetMovingRight(true);
+	ax14.SetMovingRight(true);
+	message14.SetMovingRight(true);
+	monitor14.SetMovingRight(true);
 }
 
 void CGameStateRun::MVClickToStartRight()
@@ -1255,6 +1327,8 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 		MVMap10Right();
 		MVMap11Right();
 		MVMap12Right();
+		MVMap13Right();
+		MVMap14Right();
 		MVBlack1Right();
 		MVClickToStartRight();
 		for (int i = 0; i < 48; i++)
@@ -1496,6 +1570,12 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 			MVMap11Right();
 			mapNow = 6;
 		}
+		else if (point.x >= left11.GetX1() && point.x <= left11.GetX2() && point.y >= left11.GetY1() && point.y <= left11.GetY2())
+		{
+			MVMap13Left();
+			MVMap11Right();
+			mapNow = 13;
+		}
 		else if (point.x >= right11.GetX1() && point.x <= right11.GetX2() && point.y >= right11.GetY1() && point.y <= right11.GetY2())
 		{
 			MVMap12Left();
@@ -1510,6 +1590,35 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 			MVMap11Left();
 			MVMap12Right();
 			mapNow = 11;
+		}
+	}
+	else if (mapNow == 13)
+	{
+		if (point.x >= down13.GetX1() && point.x <= down13.GetX2() && point.y >= down13.GetY1() && point.y <= down13.GetY2())
+		{
+			MVMap14Left();
+			MVMap13Right();
+			mapNow = 14;
+		}
+		else if (point.x >= right13.GetX1() && point.x <= right13.GetX2() && point.y >= right13.GetY1() && point.y <= right13.GetY2())
+		{
+			MVMap11Left();
+			MVMap13Right();
+			mapNow = 11;
+		}
+	}
+	else if (mapNow == 14)
+	{
+		if (point.x >= down14.GetX1() && point.x <= down14.GetX2() && point.y >= down14.GetY1() && point.y <= down14.GetY2())
+		{
+			MVMap13Left();
+			MVMap14Right();
+			mapNow = 13;
+		}
+		else if (point.x >= ax14.GetX1() && point.x <= ax14.GetX2() && point.y >= ax14.GetY1() && point.y <= ax14.GetY2())
+		{
+			ax14.SetMovingRight(true);
+			bagArray[0] = 1;
 		}
 	}
 }
@@ -1571,6 +1680,14 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	right11.SetMovingLeft(false);
 	map12.SetMovingLeft(false);
 	left12.SetMovingLeft(false);
+	map13.SetMovingLeft(false);
+	down13.SetMovingLeft(false);
+	right13.SetMovingLeft(false);
+	map14.SetMovingLeft(false);
+	down14.SetMovingLeft(false);
+	ax14.SetMovingLeft(false);
+	message14.SetMovingLeft(false);
+	monitor14.SetMovingLeft(false);
 	black1.SetMovingLeft(false);
 	ax.SetMovingLeft(false);
 	cpu.SetMovingLeft(false);
@@ -1641,6 +1758,14 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	right11.SetMovingRight(false);
 	map12.SetMovingRight(false);
 	left12.SetMovingRight(false);
+	map13.SetMovingRight(false);
+	down13.SetMovingRight(false);
+	right13.SetMovingRight(false);
+	map14.SetMovingRight(false);
+	down14.SetMovingRight(false);
+	ax14.SetMovingRight(false);
+	message14.SetMovingRight(false);
+	monitor14.SetMovingRight(false);
 	black1.SetMovingRight(false);
 	ax.SetMovingRight(false);
 	cpu.SetMovingRight(false);

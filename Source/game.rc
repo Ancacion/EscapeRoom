@@ -258,6 +258,22 @@ IDB_LEFT12              BITMAP                  "C:\\Users\\yuqingyun\\Documents
 
 IDB_MAP12               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map12.bmp"
 
+IDB_DOWN13              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\down13.bmp"
+
+IDB_MAP13               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map13.bmp"
+
+IDB_RIGHT13             BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\right13.bmp"
+
+IDB_AX14                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\ax14.bmp"
+
+IDB_DOWN14              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\down14.bmp"
+
+IDB_MAP14               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\map14.bmp"
+
+IDB_MESSAGE14           BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\message14.bmp"
+
+IDB_MONITOR14           BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\monitor14.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

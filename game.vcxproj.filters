@@ -380,5 +380,29 @@
     <Image Include="RES\map12.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\down13.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map13.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\right13.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\ax14.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\down14.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map14.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\message14.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\monitor14.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
