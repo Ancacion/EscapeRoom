@@ -344,5 +344,23 @@
     <Image Include="RES\safeBox9.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\left10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\map10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\memory10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\message10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\shard10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\shardBag10.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

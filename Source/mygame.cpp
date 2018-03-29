@@ -502,6 +502,12 @@ void CGameStateRun::InitMap()
 	code9.Initialize(405, 130);
 	safeBox9.Initialize(405, 290);
 
+	map10.Initialize(0, 0);
+	left10.Initialize(25, 400);
+	message10.Initialize(420, 300);
+	memory10.Initialize(320, 390);
+	shard10.Initialize(120, 390);
+
 	black1.Initialize(0, 0);
 	ax.Initialize(0, 0);
 	cpu.Initialize(80, 0);
@@ -515,6 +521,7 @@ void CGameStateRun::InitMap()
 	tap.Initialize(160, 80);
 	shardBag7.Initialize(240, 80);
 	draw.Initialize(320, 80);
+	shardBag10.Initialize(400, 80);
 
 	bag.Initialize(560, 0);
 	clickToStart.Initialize(0, 0);
@@ -575,6 +582,12 @@ void CGameStateRun::MoveMap()
 	cpu9.OnMove();
 	code9.OnMove();
 
+	map10.OnMove();
+	left10.OnMove();
+	message10.OnMove();
+	memory10.OnMove();
+	shard10.OnMove();
+
 	black1.OnMove();
 	ax.OnMove();
 	cpu.OnMove();
@@ -588,6 +601,7 @@ void CGameStateRun::MoveMap()
 	tap.OnMove();
 	shardBag7.OnMove();
 	draw.OnMove();
+	shardBag10.OnMove();
 
 	bag.OnMove();
 	clickToStart.OnMove();
@@ -648,6 +662,12 @@ void CGameStateRun::LoadMap()
 	code9.LoadBitmap(IDB_CODE9);
 	safeBox9.LoadBitmap(IDB_SAFEBOX9);
 
+	map10.LoadBitmap(IDB_MAP10);
+	left10.LoadBitmap(IDB_LEFT10);
+	message10.LoadBitmap(IDB_MESSAGE10);
+	memory10.LoadBitmap(IDB_MEMORY10);
+	shard10.LoadBitmap(IDB_SHARD10);
+
 	black1.LoadBitmap(IDB_BLACK1);
 	ax.LoadBitmap(IDB_AX);
 	cpu.LoadBitmap(IDB_CPU);
@@ -661,6 +681,7 @@ void CGameStateRun::LoadMap()
 	tap.LoadBitmap(IDB_TAP);
 	shardBag7.LoadBitmap(IDB_SHARDBAG7);
 	draw.LoadBitmap(IDB_DRAW);
+	shardBag10.LoadBitmap(IDB_SHARDBAG10);
 
 	bag.LoadBitmap(IDB_BAG);
 	clickToStart.LoadBitmap(IDB_CLICKTOSTART);
@@ -721,6 +742,12 @@ void CGameStateRun::ShowMap()
 	code9.OnShow();
 	safeBox9.OnShow();
 
+	map10.OnShow();
+	left10.OnShow();
+	message10.OnShow();
+	memory10.OnShow();
+	shard10.OnShow();
+
 	black1.OnShow();
 	ax.OnShow();
 	cpu.OnShow();
@@ -734,6 +761,7 @@ void CGameStateRun::ShowMap()
 	tap.OnShow();
 	shardBag7.OnShow();
 	draw.OnShow();
+	shardBag10.OnShow();
 
 	bag.OnShow();
 	clickToStart.OnShow();
@@ -901,6 +929,26 @@ void CGameStateRun::MVMap9Right()
 	safeBox9.SetMovingRight(true);
 }
 
+void CGameStateRun::MVMap10Left()
+{
+	map10.SetMovingLeft(true);
+	left10.SetMovingLeft(true);
+	message10.SetMovingLeft(true);
+	if (bagArray[6] == 0)
+		memory10.SetMovingLeft(true);
+	if (bagArray[13] == 0)
+		shard10.SetMovingLeft(true);
+}
+
+void CGameStateRun::MVMap10Right()
+{
+	map10.SetMovingRight(true);
+	left10.SetMovingRight(true);
+	message10.SetMovingRight(true);
+	memory10.SetMovingRight(true);
+	shard10.SetMovingRight(true);
+}
+
 void CGameStateRun::MVClickToStartRight()
 {
 	clickToStart.SetMovingRight(true);
@@ -933,6 +981,8 @@ void CGameStateRun::MVBlack1Left()
 		shardBag7.SetMovingLeft(true);
 	if (bagArray[12] == 1)
 		draw.SetMovingLeft(true);
+	if (bagArray[13] == 1)
+		shardBag10.SetMovingLeft(true);
 }
 
 void CGameStateRun::MVBlack1Right()
@@ -962,6 +1012,8 @@ void CGameStateRun::MVBlack1Right()
 		shardBag7.SetMovingRight(true);
 	if (bagArray[12] == 1)
 		draw.SetMovingRight(true);
+	if (bagArray[13] == 1)
+		shardBag10.SetMovingRight(true);
 }
 
 void CGameStateRun::OnBeginState()
@@ -1139,6 +1191,7 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 		MVMap7Right();
 		MVMap8Right();
 		MVMap9Right();
+		MVMap10Right();
 		MVBlack1Right();
 		MVClickToStartRight();
 		for (int i = 0; i < 48; i++)
@@ -1250,7 +1303,16 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 	}
 	else if (mapNow == 6)
 	{
-		if (point.x >= down6.GetX1() && point.x <= down6.GetX2() && point.y >= down6.GetY1() && point.y <= down6.GetY2())
+		if (point.x >= up6.GetX1() && point.x <= up6.GetX2() && point.y >= up6.GetY1() && point.y <= up6.GetY2())
+		{
+			//if (objNow == 3)
+			//{
+				MVMap10Left();
+				MVMap6Right();
+				mapNow = 10;
+			//}
+		}
+		else if (point.x >= down6.GetX1() && point.x <= down6.GetX2() && point.y >= down6.GetY1() && point.y <= down6.GetY2())
 		{
 			MVMap5Left();
 			MVMap6Right();
@@ -1308,9 +1370,12 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 		}
 		else if (point.x >= left8.GetX1() && point.x <= left8.GetX2() && point.y >= left8.GetY1() && point.y <= left8.GetY2())
 		{
-			MVMap9Left();
-			MVMap8Right();
-			mapNow = 9;
+			//if (objNow == 4)
+			//{
+				MVMap9Left();
+				MVMap8Right();
+				mapNow = 9;
+			//}
 		}
 		else if (point.x >= gpu8.GetX1() && point.x <= gpu8.GetX2() && point.y >= gpu8.GetY1() && point.y <= gpu8.GetY2())
 		{
@@ -1330,6 +1395,25 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 		{
 			cpu9.SetMovingRight(true);
 			bagArray[1] = 1;
+		}
+	}
+	else if (mapNow == 10)
+	{
+		if (point.x >= left10.GetX1() && point.x <= left10.GetX2() && point.y >= left10.GetY1() && point.y <= left10.GetY2())
+		{
+			MVMap6Left();
+			MVMap10Right();
+			mapNow = 6;
+		}
+		else if (point.x >= memory10.GetX1() && point.x <= memory10.GetX2() && point.y >= memory10.GetY1() && point.y <= memory10.GetY2())
+		{
+			memory10.SetMovingRight(true);
+			bagArray[6] = 1;
+		}
+		else if (point.x >= shard10.GetX1() && point.x <= shard10.GetX2() && point.y >= shard10.GetY1() && point.y <= shard10.GetY2())
+		{
+			shard10.SetMovingRight(true);
+			bagArray[13] = 1;
 		}
 	}
 }
@@ -1380,6 +1464,11 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	cpu9.SetMovingLeft(false);
 	code9.SetMovingLeft(false);
 	safeBox9.SetMovingLeft(false);
+	map10.SetMovingLeft(false);
+	left10.SetMovingLeft(false);
+	message10.SetMovingLeft(false);
+	memory10.SetMovingLeft(false);
+	shard10.SetMovingLeft(false);
 	black1.SetMovingLeft(false);
 	ax.SetMovingLeft(false);
 	cpu.SetMovingLeft(false);
@@ -1393,6 +1482,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	tap.SetMovingLeft(false);
 	shardBag7.SetMovingLeft(false);
 	draw.SetMovingLeft(false);
+	shardBag10.SetMovingLeft(false);
 	clickToStart.SetMovingLeft(false);
 
 	map0.SetMovingRight(false);
@@ -1438,6 +1528,11 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	cpu9.SetMovingRight(false);
 	code9.SetMovingRight(false);
 	safeBox9.SetMovingRight(false);
+	map10.SetMovingRight(false);
+	left10.SetMovingRight(false);
+	message10.SetMovingRight(false);
+	memory10.SetMovingRight(false);
+	shard10.SetMovingRight(false);
 	black1.SetMovingRight(false);
 	ax.SetMovingRight(false);
 	cpu.SetMovingRight(false);
@@ -1451,6 +1546,7 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	tap.SetMovingRight(false);
 	shardBag7.SetMovingRight(false);
 	draw.SetMovingRight(false);
+	shardBag10.SetMovingRight(false);
 	clickToStart.SetMovingRight(false);
 }
 

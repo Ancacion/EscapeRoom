@@ -225,6 +225,8 @@ public:
 	void MVMap8Right();
 	void MVMap9Left();
 	void MVMap9Right();
+	void MVMap10Left();
+	void MVMap10Right();
 	void MVClickToStartRight();
 	void MVBlack1Left();
 	void MVBlack1Right();
@@ -254,8 +256,9 @@ private:
 	CEraser map7, down7, left7, lcdTV7, safeBox7, clue7, tap7, shard7, draw7;
 	CEraser map8, down8, left8, box8, message8, gpu8;
 	CEraser map9, down9, cpu9, code9, safeBox9;
+	CEraser map10, left10, message10, memory10, shard10;
 	CEraser clickToStart;
-	CEraser black1, ax, cpu, gpu, goldKey, silverKey, copperKey, memory, bag, shard, slad, tap, shardBag7, draw;
+	CEraser black1, ax, cpu, gpu, goldKey, silverKey, copperKey, memory, bag, shard, slad, tap, shardBag7, draw, shardBag10;
 	int objNow = 7;
 	int mapNow = 0;
 	int mapTemp = -1;
