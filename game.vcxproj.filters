@@ -290,5 +290,23 @@
     <Image Include="RES\shard6.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\clue7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\draw.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\draw7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\shard7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\shardBag7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\tap7.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

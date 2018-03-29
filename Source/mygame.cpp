@@ -483,6 +483,10 @@ void CGameStateRun::InitMap()
 	left7.Initialize(25, 400);
 	lcdTV7.Initialize(50, 220);
 	safeBox7.Initialize(230, 340);
+	clue7.Initialize(380, 340);
+	tap7.Initialize(560, 400);
+	shard7.Initialize(480, 400);
+	draw7.Initialize(25, 120);
 
 	map8.Initialize(0, 0);
 	down8.Initialize(320, 440);
@@ -498,6 +502,8 @@ void CGameStateRun::InitMap()
 	shard.Initialize(0, 80);
 	slad.Initialize(80, 80);
 	tap.Initialize(160, 80);
+	shardBag7.Initialize(240, 80);
+	draw.Initialize(320, 80);
 
 	bag.Initialize(560, 0);
 	clickToStart.Initialize(0, 0);
@@ -539,6 +545,10 @@ void CGameStateRun::MoveMap()
 	left7.OnMove();
 	lcdTV7.OnMove();
 	safeBox7.OnMove();
+	clue7.OnMove();
+	tap7.OnMove();
+	shard7.OnMove();
+	draw7.OnMove();
 
 	map8.OnMove();
 	down8.OnMove();
@@ -554,6 +564,8 @@ void CGameStateRun::MoveMap()
 	shard.OnMove();
 	slad.OnMove();
 	tap.OnMove();
+	shardBag7.OnMove();
+	draw.OnMove();
 
 	bag.OnMove();
 	clickToStart.OnMove();
@@ -595,6 +607,10 @@ void CGameStateRun::LoadMap()
 	left7.LoadBitmap(IDB_LEFT7);
 	lcdTV7.LoadBitmap(IDB_LCDTV7);
 	safeBox7.LoadBitmap(IDB_SAFEBOX7);
+	clue7.LoadBitmap(IDB_CLUE7);
+	tap7.LoadBitmap(IDB_TAP7);
+	shard7.LoadBitmap(IDB_SHARD7);
+	draw7.LoadBitmap(IDB_DRAW7);
 
 	map8.LoadBitmap(IDB_MAP8);
 	down8.LoadBitmap(IDB_DOWN8);
@@ -610,6 +626,8 @@ void CGameStateRun::LoadMap()
 	shard.LoadBitmap(IDB_SHARD);
 	slad.LoadBitmap(IDB_SLAD);
 	tap.LoadBitmap(IDB_TAP);
+	shardBag7.LoadBitmap(IDB_SHARDBAG7);
+	draw.LoadBitmap(IDB_DRAW);
 
 	bag.LoadBitmap(IDB_BAG);
 	clickToStart.LoadBitmap(IDB_CLICKTOSTART);
@@ -651,6 +669,10 @@ void CGameStateRun::ShowMap()
 	left7.OnShow();
 	lcdTV7.OnShow();
 	safeBox7.OnShow();
+	clue7.OnShow();
+	tap7.OnShow();
+	shard7.OnShow();
+	draw7.OnShow();
 
 	map8.OnShow();
 	down8.OnShow();
@@ -666,6 +688,8 @@ void CGameStateRun::ShowMap()
 	shard.OnShow();
 	slad.OnShow();
 	tap.OnShow();
+	shardBag7.OnShow();
+	draw.OnShow();
 
 	bag.OnShow();
 	clickToStart.OnShow();
@@ -769,6 +793,13 @@ void CGameStateRun::MVMap7Left()
 	left7.SetMovingLeft(true);
 	lcdTV7.SetMovingLeft(true);
 	safeBox7.SetMovingLeft(true);
+	clue7.SetMovingLeft(true);
+	if (bagArray[10] == 0)
+		tap7.SetMovingLeft(true);
+	if (bagArray[11] == 0)
+		shard7.SetMovingLeft(true);
+	if (bagArray[12] == 0)
+		draw7.SetMovingLeft(true);
 }
 
 void CGameStateRun::MVMap7Right()
@@ -778,6 +809,10 @@ void CGameStateRun::MVMap7Right()
 	left7.SetMovingRight(true);
 	lcdTV7.SetMovingRight(true);
 	safeBox7.SetMovingRight(true);
+	clue7.SetMovingRight(true);
+	tap7.SetMovingRight(true);
+	shard7.SetMovingRight(true);
+	draw7.SetMovingRight(true);
 }
 
 void CGameStateRun::MVMap8Left()
@@ -820,6 +855,10 @@ void CGameStateRun::MVBlack1Left()
 	    slad.SetMovingLeft(true);
 	if (bagArray[10] == 1)
 	    tap.SetMovingLeft(true);
+	if (bagArray[11] == 1)
+		shardBag7.SetMovingLeft(true);
+	if (bagArray[12] == 1)
+		draw.SetMovingLeft(true);
 }
 
 void CGameStateRun::MVBlack1Right()
@@ -845,6 +884,10 @@ void CGameStateRun::MVBlack1Right()
 		slad.SetMovingRight(true);
 	if (bagArray[10] == 1)
 		tap.SetMovingRight(true);
+	if (bagArray[11] == 1)
+		shardBag7.SetMovingRight(true);
+	if (bagArray[12] == 1)
+		draw.SetMovingRight(true);
 }
 
 void CGameStateRun::OnBeginState()
@@ -1164,6 +1207,21 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 			MVMap7Right();
 			mapNow = 6;
 		}
+		else if (point.x >= tap7.GetX1() && point.x <= tap7.GetX2() && point.y >= tap7.GetY1() && point.y <= tap7.GetY2())
+		{
+			tap7.SetMovingRight(true);
+			bagArray[10] = 1;
+		}
+		else if (point.x >= shard7.GetX1() && point.x <= shard7.GetX2() && point.y >= shard7.GetY1() && point.y <= shard7.GetY2())
+		{
+			shard7.SetMovingRight(true);
+			bagArray[11] = 1;
+		}
+		else if (point.x >= draw7.GetX1() && point.x <= draw7.GetX2() && point.y >= draw7.GetY1() && point.y <= draw7.GetY2())
+		{
+			draw7.SetMovingRight(true);
+			bagArray[12] = 1;
+		}
 	}
 	else if (mapNow == 8)
 	{
@@ -1206,6 +1264,10 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	left7.SetMovingLeft(false);
 	lcdTV7.SetMovingLeft(false);
 	safeBox7.SetMovingLeft(false);
+	clue7.SetMovingLeft(false);
+	tap7.SetMovingLeft(false);
+	shard7.SetMovingLeft(false);
+	draw7.SetMovingLeft(false);
     map8.SetMovingLeft(false);
 	down8.SetMovingLeft(false);
 	black1.SetMovingLeft(false);
@@ -1219,6 +1281,8 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	shard.SetMovingLeft(false);
 	slad.SetMovingLeft(false);
 	tap.SetMovingLeft(false);
+	shardBag7.SetMovingLeft(false);
+	draw.SetMovingLeft(false);
 	clickToStart.SetMovingLeft(false);
 
 	map0.SetMovingRight(false);
@@ -1248,6 +1312,10 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	left7.SetMovingRight(false);
 	lcdTV7.SetMovingRight(false);
 	safeBox7.SetMovingRight(false);
+	clue7.SetMovingRight(false);
+	tap7.SetMovingRight(false);
+	shard7.SetMovingRight(false);
+	draw7.SetMovingRight(false);
 	map8.SetMovingRight(false);
 	down8.SetMovingRight(false);
 	black1.SetMovingRight(false);
@@ -1261,6 +1329,8 @@ void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	shard.SetMovingRight(false);
 	slad.SetMovingRight(false);
 	tap.SetMovingRight(false);
+	shardBag7.SetMovingRight(false);
+	draw.SetMovingRight(false);
 	clickToStart.SetMovingRight(false);
 }
 

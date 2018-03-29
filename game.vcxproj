@@ -326,6 +326,7 @@
     <Image Include="res\bmp00001.bmp" />
     <Image Include="res\bmp00002.bmp" />
     <Image Include="RES\clickToStart.bmp" />
+    <Image Include="RES\clue7.bmp" />
     <Image Include="RES\copperKey.bmp" />
     <Image Include="RES\cpu.bmp" />
     <Image Include="RES\down1.bmp" />
@@ -335,6 +336,8 @@
     <Image Include="RES\down6.bmp" />
     <Image Include="RES\down7.bmp" />
     <Image Include="RES\down8.bmp" />
+    <Image Include="RES\draw.bmp" />
+    <Image Include="RES\draw7.bmp" />
     <Image Include="RES\goldKey.bmp" />
     <Image Include="RES\gpu.bmp" />
     <Image Include="RES\lcdTV7.bmp" />
@@ -358,9 +361,12 @@
     <Image Include="RES\safeBox7.bmp" />
     <Image Include="RES\shard.bmp" />
     <Image Include="RES\shard6.bmp" />
+    <Image Include="RES\shard7.bmp" />
+    <Image Include="RES\shardBag7.bmp" />
     <Image Include="RES\silverKey.bmp" />
     <Image Include="RES\slad.bmp" />
     <Image Include="RES\tap.bmp" />
+    <Image Include="RES\tap7.bmp" />
     <Image Include="RES\up2.bmp" />
     <Image Include="RES\up5.bmp" />
     <Image Include="RES\up6.bmp" />

@@ -198,6 +198,18 @@ IDB_MESSAGE6            BITMAP                  "C:\\Users\\yuqingyun\\Documents
 
 IDB_SHARD6              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\shard6.bmp"
 
+IDB_CLUE7               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\clue7.bmp"
+
+IDB_DRAW                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\draw.bmp"
+
+IDB_DRAW7               BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\draw7.bmp"
+
+IDB_SHARD7              BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\shard7.bmp"
+
+IDB_SHARDBAG7           BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\shardBag7.bmp"
+
+IDB_TAP7                BITMAP                  "C:\\Users\\yuqingyun\\Documents\\EscapeRoom\\RES\\tap7.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
