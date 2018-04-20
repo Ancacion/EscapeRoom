@@ -505,6 +505,12 @@ namespace game_framework
 								mapArr[i][44]->OnMove();
 							if (!mapArr[i][52]->IsFinalBitmap())
 								mapArr[i][52]->OnMove();
+							for (int k = 30; k < 40; k++)
+							{
+								if (!mapArr[i][k]->IsFinalBitmap())
+									mapArr[i][k]->OnMove();
+								number[k - 30] = false;
+							}
 						}
 						mapArr[i][j]->OnMove();	//若不是最後一個圖形，就OnMove到最後一個圖形後停止。
 						return;
