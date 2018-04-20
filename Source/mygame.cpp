@@ -317,7 +317,7 @@ namespace game_framework
 					else
 					{
 						mapArr[i][j + 2]->Reset();
-						mapNow = 100;
+						mapNow *= 100;
 						return;
 					}
 				}
@@ -361,17 +361,27 @@ namespace game_framework
 				}
 				if (mapNow == i + 1 && j == 15 && mapObj[i][j] == 1 && point.x > mapArr[i][j]->Left() && point.x < mapArr[i][j]->Left() + mapArr[i][j]->Width() && point.y > mapArr[i][j]->Top() && point.y < mapArr[i][j]->Top() + mapArr[i][j]->Height())
 				{
+					if (!mapArr[i][40]->IsFinalBitmap())
+						mapArr[i][40]->OnMove();
+					if (!mapArr[i][42]->IsFinalBitmap())
+						mapArr[i][42]->OnMove();
+					if (!mapArr[i][43]->IsFinalBitmap())
+						mapArr[i][43]->OnMove();
+					if (!mapArr[i][44]->IsFinalBitmap())
+						mapArr[i][44]->OnMove();
+					if (!mapArr[i][45]->IsFinalBitmap())
+						mapArr[i][45]->OnMove();
+					if (!mapArr[i][52]->IsFinalBitmap())
+						mapArr[i][52]->OnMove();
+					for (int k = 30; k < 40; k++)
+					{
+						if (!mapArr[i][k]->IsFinalBitmap())
+							mapArr[i][k]->OnMove();
+						number[k - 30] = false;
+					}
 					if (hideArr[12] == 1 && hideArr[13] == 1 && hideArr[16] == 1 && hideArr[46] == 0)
 					{
 						mapArr[i][52]->Reset();
-						if (!mapArr[i][40]->IsFinalBitmap())
-							mapArr[i][40]->OnMove();
-						if (!mapArr[i][42]->IsFinalBitmap())
-							mapArr[i][42]->OnMove();
-						if (!mapArr[i][44]->IsFinalBitmap())
-							mapArr[i][44]->OnMove();
-						if (!mapArr[i][45]->IsFinalBitmap())
-							mapArr[i][45]->OnMove();
 						hideArr[46] = 1;
 					}
 					else if(hideArr[46] == 0)
@@ -489,6 +499,8 @@ namespace game_framework
 								mapArr[i][40]->OnMove();
 							if (!mapArr[i][42]->IsFinalBitmap())
 								mapArr[i][42]->OnMove();
+							if (!mapArr[i][43]->IsFinalBitmap())
+								mapArr[i][43]->OnMove();
 							if (!mapArr[i][44]->IsFinalBitmap())
 								mapArr[i][44]->OnMove();
 							if (!mapArr[i][52]->IsFinalBitmap())
