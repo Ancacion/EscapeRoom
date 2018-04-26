@@ -101,9 +101,12 @@ namespace game_framework {
 	private:
 		CMovingBitmap Background;
 		CSpecialEffect Clock;                           //­p®É¾¹
+		CAnimation *bonfire;
+		CAnimation *npcBefore, *npcAfter;
 		CAnimation *mapArr[MAP_SIZE][OBJ_SIZE];
 		bool number[10] = { true, true, true, true, true, true, true, true, true, true };
 		bool mapMove;
+		bool npcMove;
 		int digit;
 		int objNow;
 		int mapNow;

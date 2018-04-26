@@ -193,6 +193,7 @@ namespace game_framework
 		objNow = 7;
 		mapTemp = 15;
 		mapMove = false;
+		npcMove = false;
 		password7 = 1604;
 		password9 = 25689;
 		passwordInput = 0;
@@ -209,6 +210,9 @@ namespace game_framework
 		hideArr[7] = 1;
 		for (int i = 0; i < HIDEOBJ_SIZE; i++)
 			hideArr[hideObj[i]] = 1;
+		bonfire = new CAnimation(1);
+		npcBefore = new CAnimation(50);
+		npcAfter = new CAnimation(50);
 	}
 
 	CGameStateRun::~CGameStateRun()
@@ -218,6 +222,9 @@ namespace game_framework
 			for (int j = 0; j < OBJ_SIZE; j++)
 				delete mapArr[i][j];
 		}
+		delete bonfire;
+		delete npcBefore;
+		delete npcAfter;
 	}
 
 	void CGameStateRun::OnBeginState()
@@ -251,6 +258,28 @@ namespace game_framework
 				}
 			}
 		}
+		if (mapNow != 4)
+		{
+			npcBefore->Reset();
+			npcAfter->Reset();
+			npcMove = false;
+		}
+		else if (npcMove && objNow != 12)
+		{
+			if (!mapArr[3][41]->IsFinalBitmap())
+				mapArr[3][41]->OnMove();
+			if (!npcBefore->IsFinalBitmap())
+				npcBefore->ToFirst();
+		}
+		else if (npcMove)
+		{
+			hideArr[9] = 1;
+			if (!mapArr[3][41]->IsFinalBitmap())
+				mapArr[3][41]->OnMove();
+			if (!npcAfter->IsFinalBitmap())
+				npcAfter->ToFirst();
+			mapArr[3][41]->Reset();
+		}
 	}
 
 	void CGameStateRun::OnInit()	// 遊戲的初值及圖形設定
@@ -283,9 +312,27 @@ namespace game_framework
 				mapArr[i][j]->AddBitmap("Bitmaps\\hide.bmp", RGB(255, 255, 255));
 			}
 		}
+		const string rootNpc = "Bitmaps\\npc\\talk";
+		npcBefore->AddBitmap("Bitmaps\\hide.bmp", RGB(255, 255, 255));
+		for (int i = 1; i <= 5; i++)
+		{
+			filePath = rootNpc + to_string(i) + ".bmp";
+			strcpy(test, filePath.c_str());
+			npcBefore->AddBitmap(test, RGB(255, 255, 255));
+		}
+		npcBefore->AddBitmap("Bitmaps\\hide.bmp", RGB(255, 255, 255));
+		npcAfter->AddBitmap("Bitmaps\\hide.bmp", RGB(255, 255, 255));
+		for (int i = 6; i <= 8; i++)
+		{
+			filePath = rootNpc + to_string(i) + ".bmp";
+			strcpy(test, filePath.c_str());
+			npcAfter->AddBitmap(test, RGB(255, 255, 255));
+		}
+		npcAfter->AddBitmap("Bitmaps\\hide.bmp", RGB(255, 255, 255));
 		//
 		// 此OnInit動作會接到CGameStaterOver::OnInit()，所以進度還沒到100%
 		//
+		bonfire->AddBitmap("Bitmaps\\bonfire.bmp", RGB(255, 255, 255));
 	}
 
 	void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -306,6 +353,12 @@ namespace game_framework
 
 	void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 	{
+		if (point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
+		{
+			system("start chrome --allow-file-access-from-files");
+			ShellExecute(NULL, "open", "JSTest\\demo\\AngryBird_demo\\game_sample.html", NULL, NULL, SW_SHOW);
+			return;
+		}
 		for (int i = 0; i < MAP_SIZE; i++)
 		{
 			for (int j = 1; j < OBJ_SIZE; j++)
@@ -520,7 +573,12 @@ namespace game_framework
 		}
 		if (mapNow == 4)
 		{
-			if (objNow != 12)
+			if (npcBefore->IsFinalBitmap())
+				npcBefore->Reset();
+			if (npcAfter->IsFinalBitmap())
+				npcAfter->Reset();
+			npcMove = true;
+			/*if (objNow != 12)
 				mapArr[3][53]->Reset();
 			else
 			{
@@ -530,7 +588,7 @@ namespace game_framework
 					hideArr[9] = 1;
 					mapArr[3][41]->Reset();
 				}
-			}
+			}*/
 		}
 		else if (mapNow == 16)
 		{
@@ -611,5 +669,11 @@ namespace game_framework
 				mapArr[i][j]->OnShow();
 			}
 		}
+		npcBefore->SetTopLeft(0, 0);
+		npcBefore->OnShow();
+		npcAfter->SetTopLeft(0, 0);
+		npcAfter->OnShow();
+		bonfire->SetTopLeft(565, 80);
+		bonfire->OnShow();
 	}
 }
