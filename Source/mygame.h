@@ -52,9 +52,21 @@ namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 
 	enum AUDIO_ID {				// 定義各種音效的編號
-		AUDIO_DING,				// 0
-		AUDIO_LAKE,				// 1
-		AUDIO_NTUT				// 2
+		AUDIO_0,
+		AUDIO_1,
+		AUDIO_2,
+		AUDIO_3,
+		AUDIO_4,
+		AUDIO_5,
+		AUDIO_6,
+		AUDIO_7,
+		AUDIO_8,
+		AUDIO_9,
+		AUDIO_ERROR,
+		AUDIO_BGM,
+		AUDIO_DING,
+		AUDIO_LAKE,
+		AUDIO_NTUT
 	};
 
 	/////////////////////////////////////////////////////////////////////////////

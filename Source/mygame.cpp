@@ -88,6 +88,18 @@ namespace game_framework
 		//
 		Background.LoadBitmap("Bitmaps\\map\\clickToStart.bmp");
 		CAudio::Instance()->Load(AUDIO_DING, "sounds\\ding.wav");
+		CAudio::Instance()->Load(AUDIO_BGM, "sounds\\BGM.MP3");
+		CAudio::Instance()->Load(AUDIO_0, "sounds\\sound_zero.wav");
+		CAudio::Instance()->Load(AUDIO_1, "sounds\\sound_one.wav");
+		CAudio::Instance()->Load(AUDIO_2, "sounds\\sound_two.wav");
+		CAudio::Instance()->Load(AUDIO_3, "sounds\\sound_three.wav");
+		CAudio::Instance()->Load(AUDIO_4, "sounds\\sound_four.wav");
+		CAudio::Instance()->Load(AUDIO_5, "sounds\\sound_five.wav");
+		CAudio::Instance()->Load(AUDIO_6, "sounds\\sound_six.wav");
+		CAudio::Instance()->Load(AUDIO_7, "sounds\\sound_seven.wav");
+		CAudio::Instance()->Load(AUDIO_8, "sounds\\sound_eight.wav");
+		CAudio::Instance()->Load(AUDIO_9, "sounds\\sound_nine.wav");
+		CAudio::Instance()->Load(AUDIO_ERROR, "sounds\\error.MP3");
 
 		Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 		//
@@ -109,6 +121,7 @@ namespace game_framework
 	{
 		GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
 		CAudio::Instance()->Play(AUDIO_DING);
+		CAudio::Instance()->Play(AUDIO_BGM, 1);
 	}
 
 	void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)
@@ -353,12 +366,12 @@ namespace game_framework
 
 	void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 	{
-		if (point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
+		/*if (point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
 		{
 			system("start chrome --allow-file-access-from-files");
 			ShellExecute(NULL, "open", "JSTest\\demo\\AngryBird_demo\\game_sample.html", NULL, NULL, SW_SHOW);
 			return;
-		}
+		}*/
 		for (int i = 0; i < MAP_SIZE; i++)
 		{
 			for (int j = 1; j < OBJ_SIZE; j++)
@@ -467,6 +480,7 @@ namespace game_framework
 					digit++;
 					number[j - 30] = false;
 					passwordInput = passwordInput * 10 + j - 30;
+					CAudio::Instance()->Play(j - 30);
 					if (!mapArr[i][j]->IsFinalBitmap())
 						mapArr[i][j]->OnMove();
 					if ((mapNow == 7 && passwordInput == password7) || (mapNow == 7 && digit == 4 && passwordInput != password7) || (mapNow == 9 && passwordInput == password9) || (mapNow == 9 && digit == 5 && passwordInput != password9))
@@ -488,7 +502,10 @@ namespace game_framework
 						mapArr[i][43]->Reset();
 					}
 					else if ((mapNow == 7 && digit == 4 && passwordInput != password7) || (mapNow == 9 && digit == 5 && passwordInput != password9))
+					{
+						CAudio::Instance()->Play(AUDIO_ERROR);
 						mapArr[i][40]->Reset();
+					}
 				}
 				if (mapNow == i + 1 && j >= 26 && j <= 29 && mapObj[i][j] == 1 && point.x > mapArr[i][j]->Left() && point.x < mapArr[i][j]->Left() + mapArr[i][j]->Width() && point.y > mapArr[i][j]->Top() && point.y < mapArr[i][j]->Top() + mapArr[i][j]->Height())
 				{
@@ -523,6 +540,7 @@ namespace game_framework
 					{
 						mapNow = mapChange[i][j - 1];
 						mapMove = true;
+						CAudio::Instance()->Play(AUDIO_DING);
 						return;
 					}
 				}
@@ -674,6 +692,6 @@ namespace game_framework
 		npcAfter->SetTopLeft(0, 0);
 		npcAfter->OnShow();
 		bonfire->SetTopLeft(565, 80);
-		bonfire->OnShow();
+		//bonfire->OnShow();
 	}
 }
