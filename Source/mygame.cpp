@@ -100,6 +100,7 @@ namespace game_framework
 		CAudio::Instance()->Load(AUDIO_8, "sounds\\sound_eight.wav");
 		CAudio::Instance()->Load(AUDIO_9, "sounds\\sound_nine.wav");
 		CAudio::Instance()->Load(AUDIO_ERROR, "sounds\\error.MP3");
+		CAudio::Instance()->Load(AUDIO_BROTHER, "sounds\\brother.MP3");
 
 		Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 		//
@@ -122,6 +123,7 @@ namespace game_framework
 		GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
 		CAudio::Instance()->Play(AUDIO_DING);
 		CAudio::Instance()->Play(AUDIO_BGM, 1);
+		CAudio::Instance()->Play(AUDIO_BROTHER, 1);
 	}
 
 	void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)
@@ -207,6 +209,7 @@ namespace game_framework
 		mapTemp = 15;
 		mapMove = false;
 		npcMove = false;
+		macMove = false;
 		password7 = 1604;
 		password9 = 25689;
 		passwordInput = 0;
@@ -223,9 +226,19 @@ namespace game_framework
 		hideArr[7] = 1;
 		for (int i = 0; i < HIDEOBJ_SIZE; i++)
 			hideArr[hideObj[i]] = 1;
-		bonfire = new CAnimation(1);
+		mac = new CAnimation(1);
 		npcBefore = new CAnimation(50);
 		npcAfter = new CAnimation(50);
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 15; j++)
+			{
+				pic[i][j] = new CAnimation(1);
+				picMove[i][j] = false;
+			}
+		}
+		for (int i = 0; i < ADD_SIZE; i++)
+			add[i] = new CAnimation(2);
 	}
 
 	CGameStateRun::~CGameStateRun()
@@ -235,7 +248,14 @@ namespace game_framework
 			for (int j = 0; j < OBJ_SIZE; j++)
 				delete mapArr[i][j];
 		}
-		delete bonfire;
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 15; j++)
+				delete pic[i][j];
+		}
+		for (int i = 0; i < ADD_SIZE; i++)
+			delete add[i];
+		delete mac;
 		delete npcBefore;
 		delete npcAfter;
 	}
@@ -293,6 +313,34 @@ namespace game_framework
 				npcAfter->ToFirst();
 			mapArr[3][41]->Reset();
 		}
+		if (macMove)
+		{
+			if (!mac->IsFinalBitmap())
+				mac->OnMove();
+		}
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 15; j++)
+			{
+				if (picMove[i][j] == false)
+				{
+					if (!pic[i][j]->IsFinalBitmap())
+						pic[i][j]->OnMove();
+				}
+				else
+					pic[i][j]->Reset();
+			}
+		}
+		for (int i = 0; i < ADD_SIZE; i++)
+		{
+			if (addMove[i])
+			{
+				if (!add[i]->IsFinalBitmap())
+					add[i]->OnMove();
+			}
+			else
+			    add[i]->Reset();
+		}
 	}
 
 	void CGameStateRun::OnInit()	// 遊戲的初值及圖形設定
@@ -345,7 +393,29 @@ namespace game_framework
 		//
 		// 此OnInit動作會接到CGameStaterOver::OnInit()，所以進度還沒到100%
 		//
-		bonfire->AddBitmap("Bitmaps\\bonfire.bmp", RGB(255, 255, 255));
+	    mac->AddBitmap("Bitmaps\\hide.bmp", RGB(255, 255, 255));
+		mac->AddBitmap("Bitmaps\\mac.bmp", RGB(255, 255, 255));
+		const string rootPic = "Bitmaps\\pic\\pic";
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 15; j++)
+			{
+				filePath = rootPic + to_string(j + 1) + ".bmp";
+				strcpy(test, filePath.c_str());
+				pic[i][j]->AddBitmap(test, RGB(255, 255, 255));
+				pic[i][j]->AddBitmap("Bitmaps\\hide.bmp", RGB(255, 255, 255));
+			}
+		}
+		const string rootAdd = "Bitmaps\\add";
+		for (int i = 0; i < ADD_SIZE; i++)
+		{
+			for (int j = 0; j < addLength[i]; j++)
+			{
+				filePath = rootAdd + to_string(i) + "\\add" + to_string(j) + ".bmp";
+				strcpy(test, filePath.c_str());
+				add[i]->AddBitmap(test, RGB(255, 255, 255));
+			}
+		}
 	}
 
 	void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -659,6 +729,41 @@ namespace game_framework
 	void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	{
 		// 沒事。如果需要處理滑鼠移動的話，寫code在這裡
+		for (int i = 0; i < ADD_SIZE; i++)
+			addMove[i] = false;
+		if (point.y < 120)
+			macMove = true;
+		else
+		{
+			mac->Reset();
+			macMove = false;
+		}
+		for (int i = 0; i < 8; i++)
+		{
+			if (point.y > 360 && point.x > (i * 80) && point.x < (i * 80) + 80)
+			{
+				for (int j = 0; j < 8; j++)
+				{
+					for (int k = 0; k < 15; k++)
+					{
+						picMove[j][k] = false;
+						if (k == (7 + i - j))
+							picMove[j][k] = true;
+					}
+				}
+				break;
+			}
+		}
+		if (point.y < 360)
+		{
+			for (int i = 0; i < 8; i++)
+			{
+				for (int j = 0; j < 15; j++)
+					picMove[i][j] = false;
+			}
+		}
+		if (point.x > 320 && mapNow == 1)
+			addMove[1] = true;
 	}
 
 	void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
@@ -691,7 +796,20 @@ namespace game_framework
 		npcBefore->OnShow();
 		npcAfter->SetTopLeft(0, 0);
 		npcAfter->OnShow();
-		bonfire->SetTopLeft(565, 80);
-		//bonfire->OnShow();
+		mac->SetTopLeft(80, 440);
+		mac->OnShow();
+		for (int i = 0; i < 8; i++)
+		{
+			for (int j = 0; j < 15; j++)
+			{
+				pic[i][j]->SetTopLeft((80 * i), 0);
+				pic[i][j]->OnShow();
+			}
+		}
+		for (int i = 0; i < ADD_SIZE; i++)
+		{
+			add[i]->SetTopLeft(addX[i], addY[i]);
+			add[i]->OnShow();
+		}
 	}
 }
