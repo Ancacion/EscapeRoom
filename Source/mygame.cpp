@@ -101,6 +101,7 @@ namespace game_framework
 		CAudio::Instance()->Load(AUDIO_9, "sounds\\sound_nine.wav");
 		CAudio::Instance()->Load(AUDIO_ERROR, "sounds\\error.MP3");
 		CAudio::Instance()->Load(AUDIO_BROTHER, "sounds\\brother.MP3");
+		CAudio::Instance()->Load(AUDIO_GUN, "sounds\\gun.MP3");
 
 		Sleep(300);				// 放慢，以便看清楚進度，實際遊戲請刪除此Sleep
 		//
@@ -238,7 +239,7 @@ namespace game_framework
 			}
 		}
 		for (int i = 0; i < ADD_SIZE; i++)
-			add[i] = new CAnimation(2);
+			add[i] = new CAnimation(1);
 	}
 
 	CGameStateRun::~CGameStateRun()
@@ -337,6 +338,8 @@ namespace game_framework
 			{
 				if (!add[i]->IsFinalBitmap())
 					add[i]->OnMove();
+				else if (i == 0)
+					add[i]->Reset();
 			}
 			else
 			    add[i]->Reset();
@@ -442,10 +445,17 @@ namespace game_framework
 			ShellExecute(NULL, "open", "JSTest\\demo\\AngryBird_demo\\game_sample.html", NULL, NULL, SW_SHOW);
 			return;
 		}*/
+		if (mapNow == 4)
+			CAudio::Instance()->Play(AUDIO_GUN, 1);
 		for (int i = 0; i < MAP_SIZE; i++)
 		{
 			for (int j = 1; j < OBJ_SIZE; j++)
 			{
+				if (mapNow == 4)
+				{
+					addMove[0] = true;
+					addMove[4] = false;
+				}
 				if (mapNow == 12 && j >= 61 && j <= 62 && mapObj[i][j] == 1 && hideArr[j] == 0 && point.x > mapArr[i][j]->Left() && point.x < mapArr[i][j]->Left() + mapArr[i][j]->Width() && point.y > mapArr[i][j]->Top() && point.y < mapArr[i][j]->Top() + mapArr[i][j]->Height())
 				{
 					if (objNow != 0)
@@ -724,6 +734,12 @@ namespace game_framework
 				}
 			}
 		}
+		if (mapNow == 4)
+		{
+			addMove[0] = false;
+			add[0]->Reset();
+		}
+		CAudio::Instance()->Stop(AUDIO_GUN);
 	}
 
 	void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
@@ -764,6 +780,16 @@ namespace game_framework
 		}
 		if (point.x > 320 && mapNow == 1)
 			addMove[1] = true;
+		if (mapNow == 2 || mapNow == 5)
+		{
+			addMove[mapNow] = true;
+			if (add[mapNow]->IsFinalBitmap())
+				add[mapNow]->Reset();
+		}
+		if (point.x < 320 && mapNow == 3)
+			addMove[3] = true;
+		if (mapNow == 4)
+			addMove[4] = true;
 	}
 
 	void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作

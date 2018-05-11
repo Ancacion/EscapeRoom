@@ -68,7 +68,8 @@ namespace game_framework {
 		AUDIO_DING,
 		AUDIO_LAKE,
 		AUDIO_NTUT,
-		AUDIO_BROTHER
+		AUDIO_BROTHER,
+		AUDIO_GUN
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -124,9 +125,9 @@ namespace game_framework {
 		bool mapMove, npcMove, macMove, picMove[8][15];
 		int digit, objNow, mapNow, mapTemp;
 		int password7, password9, passwordInput;
-		int addLength[ADD_SIZE] = { 1, 28, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-		int addX[ADD_SIZE] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		int addY[ADD_SIZE] = { 0, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		int addLength[ADD_SIZE] = { 3, 28, 41, 31, 5, 41, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+		int addX[ADD_SIZE] = { 0, 0, 0, 440, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		int addY[ADD_SIZE] = { 0, 200, 0, 250, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		int bagObj[BAGOBJ_SIZE] = { 6, 12, 13, 9, 10, 11, 16, 5, 21, 20, 18, 22, 14, 23, 46 };
 		int hideObj[HIDEOBJ_SIZE] = { 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 7, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64 };
 		int hideArr[OBJ_SIZE];
