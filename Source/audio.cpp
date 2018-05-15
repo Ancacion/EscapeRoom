@@ -277,6 +277,7 @@ void CAudio::Pause()
 {
 	if (!isOpened)
 		return;
+	silent = true;
 	map<int, Info>::iterator i;
 	for (i = info.begin(); i != info.end(); i++) {
 		if (i->second.isGood) {
@@ -295,7 +296,7 @@ void CAudio::Play(unsigned id, bool repeat_flag)
 	//
 	// Do not play, if the file is no good
 	//
-	if (!info[id].isGood)		
+	if (!info[id].isGood || silent)		
 		return;
 	char command[MAX_MCI_COMMAND_SIZE];
 	if (repeat_flag)
@@ -315,6 +316,7 @@ void CAudio::Resume()
 {
 	if (!isOpened)
 		return;
+	silent = false;
 	map<int, Info>::iterator i;
 	for (i = info.begin(); i != info.end(); i++) {
 		char command[MAX_MCI_COMMAND_SIZE];

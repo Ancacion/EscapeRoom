@@ -44,7 +44,7 @@
 #define OBJ_SIZE 65
 #define BAGOBJ_SIZE 15
 #define HIDEOBJ_SIZE 35
-#define ADD_SIZE 22
+#define ADD_SIZE 25
 #define Swap(x, y) { int t = x; x = y; y = t; }
 
 namespace game_framework {
@@ -125,12 +125,12 @@ namespace game_framework {
 		CAnimation *add[ADD_SIZE];
 		bool addMove[ADD_SIZE];
 		bool number[10] = { true, true, true, true, true, true, true, true, true, true };
-		bool mapMove, npcMove, macMove, picMove[8][15], mes;
+		bool mapMove, npcMove, macMove, picMove[8][15], mes, chooseMovie;
 		int digit, objNow, mapNow, mapTemp;
 		int password7, password9, passwordInput;
-		int addLength[ADD_SIZE] = { 3, 28, 41, 31, 5, 41, 5, 20, 1, 1, 1, 1, 1, 1, 1, 1, 20, 20, 20, 20, 42, 32 };
-		int addX[ADD_SIZE] = { 0, 0, 0, 440, 0, 0, 0, 420, 0, 0, 0, 0, 0, 0, 0, 0, 310, 365, 530, 585, 0, 0 };
-		int addY[ADD_SIZE] = { 0, 200, 0, 250, 0, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 160, 160, 160, 160, 0, 0 };
+		int addLength[ADD_SIZE] = { 3, 28, 41, 31, 5, 41, 5, 21, 1, 1, 1, 1, 1, 1, 1, 1, 21, 21, 21, 21, 42, 32, 2, 2, 2 };
+		int addX[ADD_SIZE] = { 0, 0, 0, 440, 0, 0, 0, 420, 0, 0, 0, 0, 0, 0, 0, 0, 310, 365, 530, 585, 0, 0, 600, 600, 420 };
+		int addY[ADD_SIZE] = { 0, 200, 0, 250, 0, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 160, 160, 160, 160, 0, 0, 80, 80, 80 };
 		int bagObj[BAGOBJ_SIZE] = { 6, 12, 13, 9, 10, 11, 16, 5, 21, 20, 18, 22, 14, 23, 46 };
 		int hideObj[HIDEOBJ_SIZE] = { 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 7, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64 };
 		int hideArr[OBJ_SIZE];

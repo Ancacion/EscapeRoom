@@ -109,6 +109,7 @@ private:
     HANDLE				hThread;	// MCI command thread
 	HANDLE				hWriteEnd;	// Pipe write handle for thread
 	const static int	MAX_MCI_COMMAND_SIZE = 400;
+	bool silent = false;
 };
 
 }

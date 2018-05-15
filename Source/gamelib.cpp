@@ -222,6 +222,16 @@ void CAnimation::ToFirst()
 	}
 }
 
+void CAnimation::ToSecond()
+{
+	GAME_ASSERT(bmp.size() != 0, "CAnimation: Bitmaps must be loaded first.");
+	delay_counter = delay_count;
+	bmp_iter = bmp.begin();
+	bmp_iter++;
+	bmp_counter = 0;
+	bmp_counter++;
+}
+
 void CAnimation::SetDelayCount(int dc)
 {
 	GAME_ASSERT(dc > 0, "CAnimation: Delay count must be >= 1");

@@ -127,7 +127,7 @@ namespace game_framework
 		GotoGameState(GAME_STATE_RUN);		// 切換至GAME_STATE_RUN
 		CAudio::Instance()->Play(AUDIO_DING);
 		CAudio::Instance()->Play(AUDIO_BGM, 1);
-		CAudio::Instance()->Play(AUDIO_BROTHER);
+		//CAudio::Instance()->Play(AUDIO_BROTHER);
 	}
 
 	void CGameStateInit::OnMouseMove(UINT nFlags, CPoint point)
@@ -215,6 +215,7 @@ namespace game_framework
 		mapMove = false;
 		npcMove = false;
 		macMove = false;
+		chooseMovie = false;
 		password7 = 1604;
 		password9 = 25689;
 		passwordInput = 0;
@@ -253,6 +254,7 @@ namespace game_framework
 		}
 		for (int i = 0; i < ADD_SIZE; i++)
 			addMove[i] = false;
+		addMove[22] = true;
 	}
 
 	CGameStateRun::~CGameStateRun()
@@ -351,12 +353,14 @@ namespace game_framework
 		{
 			if (addMove[i])
 			{
-				if (!add[i]->IsFinalBitmap())
+				if (!add[i]->IsFinalBitmap() && (i == 7 || i == 16 || i == 17 || i == 18 || i == 19))
+					add[i]->ToFirst();
+				else if (!add[i]->IsFinalBitmap())
 					add[i]->OnMove();
 				else if (i == 0)
 					add[i]->Reset();
-				else if (i == 7 || i == 16 || i == 17 || i == 18 || i == 19)
-					add[i]->ToFirst();
+				if ((i == 7 || i == 16 || i == 17 || i == 18 || i == 19) && add[i]->IsFinalBitmap())
+					add[i]->ToSecond();
 			}
 			else
 			    add[i]->Reset();
@@ -464,6 +468,32 @@ namespace game_framework
 		}*/
 		if (mapNow == 4)
 			CAudio::Instance()->Play(AUDIO_GUN, 1);
+		if (point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
+		{
+			if (addMove[22])
+			{
+				CAudio::Instance()->Pause();
+				addMove[22] = false;
+				addMove[23] = true;
+			}
+			else
+			{
+				CAudio::Instance()->Resume();
+				addMove[22] = true;
+				addMove[23] = false;
+			}
+			return;
+		}
+		if (mapNow == 7 && point.x > 420 && point.x < 500 && point.y > 80 && point.y < 240 && !chooseMovie)
+		{
+			addMove[24] = false;
+			addMove[7] = false;
+			addMove[16] = false;
+			addMove[17] = false;
+			addMove[18] = false;
+			addMove[19] = false;
+			chooseMovie = true;
+		}
 		for (int i = 0; i < MAP_SIZE; i++)
 		{
 			for (int j = 1; j < OBJ_SIZE; j++)
@@ -776,9 +806,11 @@ namespace game_framework
 	void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	{
 		// 沒事。如果需要處理滑鼠移動的話，寫code在這裡
+		if (mapNow != 7 && mapNow != 15)
+			chooseMovie = false;
 		for (int i = 0; i < ADD_SIZE; i++)
 		{
-			if (i != 21)
+			if (i != 21 && i != 22 && i != 23)
 				addMove[i] = false;
 		}
 		if (add[21]->IsFinalBitmap())
@@ -840,7 +872,7 @@ namespace game_framework
 					picMove[i][j] = false;
 			}
 		}
-		if (mapNow == 7 && point.y > 240)
+		if (mapNow == 7 && point.x > 320 && !chooseMovie)
 		{
 			addMove[7] = true;
 			addMove[16] = true;
@@ -860,6 +892,8 @@ namespace game_framework
 				CAudio::Instance()->Play(AUDIO_GUN2);
 			addMove[6] = true;
 		}
+		if (mapNow == 7 && point.x > 420 && point.x < 500 && point.y > 80 && point.y < 240 && !chooseMovie)
+			addMove[24] = true;
 	}
 
 	void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
