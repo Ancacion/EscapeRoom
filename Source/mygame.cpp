@@ -468,7 +468,7 @@ namespace game_framework
 		}*/
 		if (mapNow == 4)
 			CAudio::Instance()->Play(AUDIO_GUN, 1);
-		if (point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
+		if (point.x > 600 && point.x < 640 && point.y > 80 && point.y < 120)
 		{
 			if (addMove[22])
 			{
@@ -880,7 +880,7 @@ namespace game_framework
 			addMove[18] = true;
 			addMove[19] = true;
 		}
-		if (mapNow == 6 && point.x > 350 && point.y > 80 && point.y < 380)
+		if (mapNow == 6 && point.x > 500 && point.x < 540 && point.y > 200 && point.y < 300)
 		    addMove[20] = true;
 		if (addMove[20] == false)
 			CAudio::Instance()->Stop(AUDIO_CAR);

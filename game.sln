@@ -7,7 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game", "game.vcxproj", "{DD
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "gameSetup.vdproj", "{984E2E2A-0DB0-4F9D-9E5C-A3C536609A39}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EscapeRoom", "EscapeRoom\EscapeRoom.vdproj", "{85E2CB3E-CCFB-42B3-B5F2-B6A3C3F4EF7C}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "EscapeRoom", "EscapeRoom\EscapeRoom.vdproj", "{C7EAB18B-9EA5-4F6A-81EC-BE42E2153444}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,8 +22,8 @@ Global
 		{984E2E2A-0DB0-4F9D-9E5C-A3C536609A39}.Debug|Win32.ActiveCfg = Debug
 		{984E2E2A-0DB0-4F9D-9E5C-A3C536609A39}.Release|Win32.ActiveCfg = Release
 		{984E2E2A-0DB0-4F9D-9E5C-A3C536609A39}.Release|Win32.Build.0 = Release
-		{85E2CB3E-CCFB-42B3-B5F2-B6A3C3F4EF7C}.Debug|Win32.ActiveCfg = Debug
-		{85E2CB3E-CCFB-42B3-B5F2-B6A3C3F4EF7C}.Release|Win32.ActiveCfg = Release
+		{C7EAB18B-9EA5-4F6A-81EC-BE42E2153444}.Debug|Win32.ActiveCfg = Debug
+		{C7EAB18B-9EA5-4F6A-81EC-BE42E2153444}.Release|Win32.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
