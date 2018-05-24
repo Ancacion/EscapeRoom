@@ -68,7 +68,7 @@
 #pragma once
 #define SIZE_X				 640		// 設定遊戲畫面的解析度為640x480
 #define SIZE_Y				 480		// 註：若不使用標準的解析度，則不能切換到全螢幕
-#define OPEN_AS_FULLSCREEN	 true		// 是否以全螢幕方式開啟遊戲
+#define OPEN_AS_FULLSCREEN	 false		// 是否以全螢幕方式開啟遊戲
 #define SHOW_LOAD_PROGRESS   true		// 是否顯示loading(OnInit)的進度
 #define DEFAULT_BG_COLOR	 RGB(0,0,0)	// 遊戲畫面預設的背景顏色(黑色)
 #define GAME_CYCLE_TIME		 33		    // 每33ms跑一次Move及Show(每秒30次)
@@ -256,15 +256,19 @@ public:
 	void Add(int n);			// 增加整數值
 	int  GetInteger();			// 回傳整數值
 	void LoadBitmap();			// 載入0..9及負號之圖形
+	void LoadBitmapE();
+	void LoadBitmapL();
 	void SetInteger(int);		// 設定整數值
 	void SetTopLeft(int,int);	// 將動畫的左上角座標移至 (x,y)
 	void ShowBitmap();			// 將動畫貼到螢幕
+	void ShowBitmapE();
+	void ShowBitmapL();
 private:
 	const int NUMDIGITS;			// 共顯示NUMDIGITS個位數
-	static CMovingBitmap digit[11]; // 儲存0..9及負號之圖形(bitmap)
+	static CMovingBitmap digit[11], digitE[11], digitL[11]; // 儲存0..9及負號之圖形(bitmap)
 	int x, y;						// 顯示的座標
 	int n;							// 整數值
-	bool isBmpLoaded;				// 是否已經載入圖形
+	bool isBmpLoaded, isBmpLoadedE, isBmpLoadedL;				// 是否已經載入圖形
 };
 
 /////////////////////////////////////////////////////////////////////////////

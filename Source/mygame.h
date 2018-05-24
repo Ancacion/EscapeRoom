@@ -123,12 +123,14 @@ namespace game_framework {
 		CAnimation *mapArr[MAP_SIZE][OBJ_SIZE];
 		CAnimation *pic[8][15];
 		CAnimation *add[ADD_SIZE];
+		CInteger experience, money, level;
+		CMovingBitmap levelExpMoney;
 		bool addMove[ADD_SIZE];
 		bool number[10] = { true, true, true, true, true, true, true, true, true, true };
 		bool mapMove, npcMove, macMove, picMove[8][15], mes, chooseMovie;
 		int digit, objNow, mapNow, mapTemp;
 		int password7, password9, passwordInput;
-		int addLength[ADD_SIZE] = { 3, 28, 41, 31, 5, 41, 5, 21, 1, 1, 1, 1, 1, 1, 1, 1, 21, 21, 21, 21, 42, 32, 2, 2, 2 };
+		int addLength[ADD_SIZE] = { 3, 29, 41, 31, 5, 41, 5, 21, 1, 1, 1, 1, 1, 1, 1, 1, 21, 21, 21, 21, 42, 32, 2, 2, 2 };
 		int addX[ADD_SIZE] = { 0, 0, 0, 440, 0, 0, 0, 420, 0, 0, 0, 0, 0, 0, 0, 0, 310, 365, 530, 585, 0, 0, 600, 600, 420 };
 		int addY[ADD_SIZE] = { 0, 200, 0, 250, 0, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 160, 160, 160, 160, 0, 0, 80, 80, 80 };
 		int bagObj[BAGOBJ_SIZE] = { 6, 12, 13, 9, 10, 11, 16, 5, 21, 20, 18, 22, 14, 23, 46 };

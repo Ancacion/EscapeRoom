@@ -270,11 +270,15 @@ int CAnimation::Width()
 /////////////////////////////////////////////////////////////////////////////
 
 CMovingBitmap CInteger::digit[11];
+CMovingBitmap CInteger::digitE[11];
+CMovingBitmap CInteger::digitL[11];
 
 CInteger::CInteger(int digits)
 : NUMDIGITS(digits)
 {
 	isBmpLoaded = false;
+	isBmpLoadedE = false;
+	isBmpLoadedL = false;
 }
 
 void CInteger::Add(int x)
@@ -297,6 +301,42 @@ void CInteger::LoadBitmap()
 		for (int i=0; i < 11; i++)
 			digit[i].LoadBitmap(d[i],RGB(255,255,255));
 		isBmpLoaded = true;
+	}
+}
+
+void CInteger::LoadBitmapE()
+{
+	if (!isBmpLoadedE) {
+		digitE[0].LoadBitmap("Bitmaps\\exp\\bmp0.bmp", RGB(255, 255, 255));
+		digitE[1].LoadBitmap("Bitmaps\\exp\\bmp1.bmp", RGB(255, 255, 255));
+		digitE[2].LoadBitmap("Bitmaps\\exp\\bmp2.bmp", RGB(255, 255, 255));
+		digitE[3].LoadBitmap("Bitmaps\\exp\\bmp3.bmp", RGB(255, 255, 255));
+		digitE[4].LoadBitmap("Bitmaps\\exp\\bmp4.bmp", RGB(255, 255, 255));
+		digitE[5].LoadBitmap("Bitmaps\\exp\\bmp5.bmp", RGB(255, 255, 255));
+		digitE[6].LoadBitmap("Bitmaps\\exp\\bmp6.bmp", RGB(255, 255, 255));
+		digitE[7].LoadBitmap("Bitmaps\\exp\\bmp7.bmp", RGB(255, 255, 255));
+		digitE[8].LoadBitmap("Bitmaps\\exp\\bmp8.bmp", RGB(255, 255, 255));
+		digitE[9].LoadBitmap("Bitmaps\\exp\\bmp9.bmp", RGB(255, 255, 255));
+		digitE[10].LoadBitmap("Bitmaps\\exp\\bmp10.bmp", RGB(255, 255, 255));
+		isBmpLoadedE = true;
+	}
+}
+
+void CInteger::LoadBitmapL()
+{
+	if (!isBmpLoadedL) {
+		digitL[0].LoadBitmap("Bitmaps\\level\\bmp0.bmp", RGB(255, 255, 255));
+		digitL[1].LoadBitmap("Bitmaps\\level\\bmp1.bmp", RGB(255, 255, 255));
+		digitL[2].LoadBitmap("Bitmaps\\level\\bmp2.bmp", RGB(255, 255, 255));
+		digitL[3].LoadBitmap("Bitmaps\\level\\bmp3.bmp", RGB(255, 255, 255));
+		digitL[4].LoadBitmap("Bitmaps\\level\\bmp4.bmp", RGB(255, 255, 255));
+		digitL[5].LoadBitmap("Bitmaps\\level\\bmp5.bmp", RGB(255, 255, 255));
+		digitL[6].LoadBitmap("Bitmaps\\level\\bmp6.bmp", RGB(255, 255, 255));
+		digitL[7].LoadBitmap("Bitmaps\\level\\bmp7.bmp", RGB(255, 255, 255));
+		digitL[8].LoadBitmap("Bitmaps\\level\\bmp8.bmp", RGB(255, 255, 255));
+		digitL[9].LoadBitmap("Bitmaps\\level\\bmp9.bmp", RGB(255, 255, 255));
+		digitL[10].LoadBitmap("Bitmaps\\level\\bmp10.bmp", RGB(255, 255, 255));
+		isBmpLoadedL = true;
 	}
 }
 
@@ -332,6 +372,58 @@ void CInteger::ShowBitmap()
 	if (n < 0) { // 如果小於0，則顯示負號
 		digit[10].SetTopLeft(nx, y);
 		digit[10].ShowBitmap();
+	}
+}
+
+void CInteger::ShowBitmapE()
+{
+	GAME_ASSERT(isBmpLoadedE, "CInteger: 請先執行LoadBitmap，然後才能ShowBitmap");
+	int nx;		// 待顯示位數的 x 座標
+	int MSB;	// 最左邊(含符號)的位數的數值
+	if (n >= 0) {
+		MSB = n;
+		nx = x + digitE[0].Width()*(NUMDIGITS - 1);
+	}
+	else {
+		MSB = -n;
+		nx = x + digitE[0].Width()*NUMDIGITS;
+	}
+	for (int i = 0; i < NUMDIGITS; i++) {
+		int d = MSB % 10;
+		MSB /= 10;
+		digitE[d].SetTopLeft(nx, y);
+		digitE[d].ShowBitmap();
+		nx -= digitE[d].Width();
+	}
+	if (n < 0) { // 如果小於0，則顯示負號
+		digitE[10].SetTopLeft(nx, y);
+		digitE[10].ShowBitmap();
+	}
+}
+
+void CInteger::ShowBitmapL()
+{
+	GAME_ASSERT(isBmpLoadedL, "CInteger: 請先執行LoadBitmap，然後才能ShowBitmap");
+	int nx;		// 待顯示位數的 x 座標
+	int MSB;	// 最左邊(含符號)的位數的數值
+	if (n >= 0) {
+		MSB = n;
+		nx = x + digitL[0].Width()*(NUMDIGITS - 1);
+	}
+	else {
+		MSB = -n;
+		nx = x + digitL[0].Width()*NUMDIGITS;
+	}
+	for (int i = 0; i < NUMDIGITS; i++) {
+		int d = MSB % 10;
+		MSB /= 10;
+		digitL[d].SetTopLeft(nx, y);
+		digitL[d].ShowBitmap();
+		nx -= digitL[d].Width();
+	}
+	if (n < 0) { // 如果小於0，則顯示負號
+		digitL[10].SetTopLeft(nx, y);
+		digitL[10].ShowBitmap();
 	}
 }
 

@@ -278,7 +278,13 @@ namespace game_framework
 
 	void CGameStateRun::OnBeginState()
 	{
-		
+		level.SetInteger(0);
+		level.SetTopLeft(20, 80);
+		experience.SetInteger(0);
+		experience.SetTopLeft(20, 99);
+		money.SetInteger(0);
+		money.SetTopLeft(20, 118);
+		levelExpMoney.SetTopLeft(0, 80);
 	}
 
 	void CGameStateRun::OnMove()	// 移動遊戲元素
@@ -353,13 +359,13 @@ namespace game_framework
 		{
 			if (addMove[i])
 			{
-				if (!add[i]->IsFinalBitmap() && (i == 7 || i == 16 || i == 17 || i == 18 || i == 19))
+				if (!add[i]->IsFinalBitmap() && (i == 1 || i == 7 || i == 16 || i == 17 || i == 18 || i == 19))
 					add[i]->ToFirst();
 				else if (!add[i]->IsFinalBitmap())
 					add[i]->OnMove();
 				else if (i == 0)
 					add[i]->Reset();
-				if ((i == 7 || i == 16 || i == 17 || i == 18 || i == 19) && add[i]->IsFinalBitmap())
+				if ((i == 1 || i == 7 || i == 16 || i == 17 || i == 18 || i == 19) && add[i]->IsFinalBitmap())
 					add[i]->ToSecond();
 			}
 			else
@@ -440,6 +446,10 @@ namespace game_framework
 				add[i]->AddBitmap(test, RGB(255, 255, 255));
 			}
 		}
+		level.LoadBitmapL();
+		experience.LoadBitmapE();
+		money.LoadBitmap();
+		levelExpMoney.LoadBitmap("Bitmaps\\levelExpMoney.bmp", RGB(255, 255, 255));
 	}
 
 	void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -503,6 +513,25 @@ namespace game_framework
 					addMove[0] = true;
 					addMove[4] = false;
 				}
+				if (mapNow == 19)
+				{
+					for (int i = 0; i < MAP_SIZE; i++)
+					{
+						for (int j = 0; j < OBJ_SIZE; j++)
+						    hideArr[j] = 0;
+					}
+					hideArr[0] = 1;
+					hideArr[5] = 1;
+					hideArr[7] = 1;
+					for (int i = 0; i < HIDEOBJ_SIZE; i++)
+						hideArr[hideObj[i]] = 1;
+					level.SetInteger(0);
+					experience.SetInteger(0);
+					money.SetInteger(0);
+					mapNow = 1;
+					mapMove = true;
+					return;
+				}
 				if (mapNow == 12 && j >= 61 && j <= 62 && mapObj[i][j] == 1 && hideArr[j] == 0 && point.x > mapArr[i][j]->Left() && point.x < mapArr[i][j]->Left() + mapArr[i][j]->Width() && point.y > mapArr[i][j]->Top() && point.y < mapArr[i][j]->Top() + mapArr[i][j]->Height())
 				{
 					mes = false;
@@ -511,7 +540,10 @@ namespace game_framework
 					else
 					{
 						mapArr[i][j + 2]->Reset();
-						mapNow *= 100;
+						if (j == 62)
+							mapNow *= 100;
+						else
+							mapNow = 19;
 						return;
 					}
 				}
@@ -775,6 +807,8 @@ namespace game_framework
 
 	void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	{
+		if (mapNow >= 1 && mapNow <= 14 && money.GetInteger() < 99999)
+		    money.Add(813);
 		mapMove = false;
 		if (!mapArr[3][51]->IsFinalBitmap())
 			mapArr[3][51]->OnMove();
@@ -806,6 +840,13 @@ namespace game_framework
 	void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	{
 		// 沒事。如果需要處理滑鼠移動的話，寫code在這裡
+		if (mapNow >= 1 && mapNow <= 14 && experience.GetInteger() < 99999)
+			experience.Add(813);
+		else if (mapNow >= 1 && mapNow <= 14 && experience.GetInteger() == 99999 && level.GetInteger() < 99999)
+		{
+			level.Add(1);
+			experience.Add(-99999);
+		}
 		if (mapNow != 7 && mapNow != 15)
 			chooseMovie = false;
 		for (int i = 0; i < ADD_SIZE; i++)
@@ -940,6 +981,13 @@ namespace game_framework
 		{
 			add[i]->SetTopLeft(addX[i], addY[i]);
 			add[i]->OnShow();
+		}
+		if (mapNow >= 1 && mapNow <= 14)
+		{
+			level.ShowBitmapL();
+			experience.ShowBitmapE();
+			money.ShowBitmap();
+			levelExpMoney.ShowBitmap();
 		}
 	}
 }
