@@ -58,6 +58,7 @@
 #include "audio.h"
 #include "mygame.h"
 #include <string>
+#include <time.h>
 
 namespace game_framework
 {
@@ -285,6 +286,14 @@ namespace game_framework
 		money.SetInteger(0);
 		money.SetTopLeft(20, 118);
 		levelExpMoney.SetTopLeft(0, 80);
+		cama.SetTopLeft(560, 80);
+		for (int i = 0; i < 12; i++)
+		{
+			gameCard[i].SetTopLeft(animalX[i], animalY[i]);
+			growButton[i].SetTopLeft(animalX[i], animalY[i] + 80);
+			for (int j = 0; j < 4; j++)
+				animal[i][j].SetTopLeft(animalX[i], animalY[i]);
+		}
 	}
 
 	void CGameStateRun::OnMove()	// 移動遊戲元素
@@ -450,6 +459,19 @@ namespace game_framework
 		experience.LoadBitmapE();
 		money.LoadBitmap();
 		levelExpMoney.LoadBitmap("Bitmaps\\levelExpMoney.bmp", RGB(255, 255, 255));
+		cama.LoadBitmap("Bitmaps\\cama.bmp", RGB(255, 255, 255));
+		const string rootAnimal = "Bitmaps\\animal";
+		for (int i = 0; i < 12; i++)
+		{
+			gameCard[i].LoadBitmap("Bitmaps\\gameCard.bmp", RGB(255, 255, 255));
+			growButton[i].LoadBitmap("Bitmaps\\growButton.bmp", RGB(255, 255, 255));
+			for (int j = 0; j < 4; j++)
+			{
+				filePath = rootAnimal + to_string(i + 1) + "\\a" + to_string(j + 1) + ".bmp";
+				strcpy(test, filePath.c_str());
+				animal[i][j].LoadBitmap(test, RGB(255, 255, 255));
+			}
+		}
 	}
 
 	void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -478,7 +500,7 @@ namespace game_framework
 		}*/
 		if (mapNow == 4)
 			CAudio::Instance()->Play(AUDIO_GUN, 1);
-		if (point.x > 600 && point.x < 640 && point.y > 80 && point.y < 120)
+		if (point.x > 600 && point.x < 640 && point.y > 440 && point.y < 480)
 		{
 			if (addMove[22])
 			{
@@ -807,8 +829,37 @@ namespace game_framework
 
 	void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	{
+		if (mapNow != 20 && point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
+		{
+			mapTemp = mapNow;
+			mapNow = 20;
+			return;
+		}
+		else if (point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
+		{
+			mapNow = mapTemp;
+			mapTemp = 15;
+			return;
+		}
+		if (mapNow == 20)
+		{
+			for (int i = 0; i < 12; i++)
+			{
+				if (point.x > growButtonXY[i][0] && point.x < growButtonXY[i][1] && point.y > growButtonXY[i][2] && point.y < growButtonXY[i][3] && animalBlock[i] == false && money.GetInteger() >= 50000 && animalFlag[i] < 4)
+				{
+					animalFlag[i]++;
+					money.Add(-50000);
+				}
+			}
+			return;
+		}
 		if (mapNow >= 1 && mapNow <= 14 && money.GetInteger() < 99999)
-		    money.Add(813);
+		{
+			srand((unsigned)time(NULL));
+			money.Add(rand() % 5000 + 1);
+			if (money.GetInteger() > 99999)
+				money.SetInteger(99999);
+		} 
 		mapMove = false;
 		if (!mapArr[3][51]->IsFinalBitmap())
 			mapArr[3][51]->OnMove();
@@ -982,12 +1033,34 @@ namespace game_framework
 			add[i]->SetTopLeft(addX[i], addY[i]);
 			add[i]->OnShow();
 		}
-		if (mapNow >= 1 && mapNow <= 14)
+		if ((mapNow >= 1 && mapNow <= 14) || mapNow == 20)
 		{
 			level.ShowBitmapL();
 			experience.ShowBitmapE();
 			money.ShowBitmap();
 			levelExpMoney.ShowBitmap();
+		}
+		cama.ShowBitmap();
+		for (int i = 0; i < 12; i++)
+		{
+			if (level.GetInteger() == animalLevel[i] && animalBlock[i])
+			{
+				animalBlock[i] = false;
+				animalFlag[i]++;
+			}
+		}
+		if (mapNow == 20)
+		{
+			for (int i = 0; i < 12; i++)
+			{
+				if (animalFlag[i] > 0)
+				{
+					animal[i][animalFlag[i] - 1].ShowBitmap();
+					growButton[i].ShowBitmap();
+				}
+				else
+					gameCard[i].ShowBitmap();
+			}
 		}
 	}
 }

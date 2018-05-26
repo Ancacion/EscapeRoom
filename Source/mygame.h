@@ -124,7 +124,12 @@ namespace game_framework {
 		CAnimation *pic[8][15];
 		CAnimation *add[ADD_SIZE];
 		CInteger experience, money, level;
-		CMovingBitmap levelExpMoney;
+		CMovingBitmap levelExpMoney, cama, gameCard[12], growButton[12], animal[12][4];
+		int animalFlag[12] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		bool animalBlock[12] = { true, true, true, true, true, true, true, true, true, true, true, true };
+		int animalLevel[12] = { 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22 };
+		int animalX[12] = { 80, 160, 240, 320, 400, 480, 80, 160, 240, 320, 400, 480 };
+		int animalY[12] = { 80, 80, 80, 80, 80, 80, 240, 240, 240, 240, 240, 240 };
 		bool addMove[ADD_SIZE];
 		bool number[10] = { true, true, true, true, true, true, true, true, true, true };
 		bool mapMove, npcMove, macMove, picMove[8][15], mes, chooseMovie;
@@ -132,7 +137,7 @@ namespace game_framework {
 		int password7, password9, passwordInput;
 		int addLength[ADD_SIZE] = { 3, 29, 41, 31, 5, 41, 5, 21, 1, 1, 1, 1, 1, 1, 1, 1, 21, 21, 21, 21, 42, 32, 2, 2, 2 };
 		int addX[ADD_SIZE] = { 0, 0, 0, 440, 0, 0, 0, 420, 0, 0, 0, 0, 0, 0, 0, 0, 310, 365, 530, 585, 0, 0, 600, 600, 420 };
-		int addY[ADD_SIZE] = { 0, 200, 0, 250, 0, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 160, 160, 160, 160, 0, 0, 80, 80, 80 };
+		int addY[ADD_SIZE] = { 0, 200, 0, 250, 0, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 160, 160, 160, 160, 0, 0, 440, 440, 80 };
 		int bagObj[BAGOBJ_SIZE] = { 6, 12, 13, 9, 10, 11, 16, 5, 21, 20, 18, 22, 14, 23, 46 };
 		int hideObj[HIDEOBJ_SIZE] = { 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 7, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64 };
 		int hideArr[OBJ_SIZE];
@@ -196,6 +201,18 @@ namespace game_framework {
 									   { 0, 14, 0, 11 },
 									   { 0, 13, 0, 0 },
 									   { 0, 0, 0, 0 } };
+		int growButtonXY[12][4] = { { 80, 160, 160, 240 },
+		                            { 160, 240, 160, 240 },
+		                            { 240, 320, 160, 240 },
+		                            { 320, 400, 160, 240 },
+		                            { 400, 480, 160, 240 },
+		                            { 480, 560, 160, 240 },
+		                            { 80, 160, 320, 400 },
+		                            { 160, 240, 320, 400 },
+		                            { 240, 320, 320, 400 },
+		                            { 320, 400, 320, 400 },
+		                            { 400, 480, 320, 400 },
+		                            { 480, 560, 320, 400 } };
 	};
 
 	/////////////////////////////////////////////////////////////////////////////
