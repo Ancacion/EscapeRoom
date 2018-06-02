@@ -246,10 +246,12 @@ namespace game_framework
 		}
 		for (int i = 0; i < ADD_SIZE; i++)
 		{
-			if (i == 7 || i == 16 || i == 17 || i == 18 || i == 19)
+			if (i == 7 || i == 16 || i == 17 || i == 18 || i == 19 || i == 25)
 				add[i] = new CAnimation(20);
 			else if(i == 6)
 				add[i] = new CAnimation(2);
+			else if (i == 26 || i == 27 || i == 28)
+				add[i] = new CAnimation(3);
 			else
 			    add[i] = new CAnimation(1);
 		}
@@ -287,6 +289,11 @@ namespace game_framework
 		money.SetTopLeft(20, 118);
 		levelExpMoney.SetTopLeft(0, 80);
 		cama.SetTopLeft(560, 80);
+		gamble.SetTopLeft(560, 160);
+		pinball.SetTopLeft(0, 0);
+		pull1.SetTopLeft(340, 444);
+		pull2.SetTopLeft(340, 444);
+		pull3.SetTopLeft(340, 444);
 		for (int i = 0; i < 12; i++)
 		{
 			gameCard[i].SetTopLeft(animalX[i], animalY[i]);
@@ -376,6 +383,18 @@ namespace game_framework
 					add[i]->Reset();
 				if ((i == 1 || i == 7 || i == 16 || i == 17 || i == 18 || i == 19) && add[i]->IsFinalBitmap())
 					add[i]->ToSecond();
+				if (i == 25 && add[i]->IsFinalBitmap())
+					add[i]->Reset();
+				if ((i == 26 || i == 27 || i == 28) && add[i]->IsFinalBitmap())
+				{
+					showPinball = false;
+					add[i]->Reset();
+					mapNow = mapTemp;
+					mapTemp = 15;
+					addMove[i] = false;
+					shoot = false;
+					CAudio::Instance()->Stop(15 + pinballMusic);
+				}
 			}
 			else
 			    add[i]->Reset();
@@ -472,6 +491,11 @@ namespace game_framework
 				animal[i][j].LoadBitmap(test, RGB(255, 255, 255));
 			}
 		}
+		gamble.LoadBitmap("Bitmaps\\gamble.bmp", RGB(255, 255, 255));
+		pinball.LoadBitmap("Bitmaps\\pinball.bmp", RGB(255, 255, 255));
+		pull1.LoadBitmap("Bitmaps\\pull1.bmp", RGB(255, 255, 255));
+		pull2.LoadBitmap("Bitmaps\\pull2.bmp", RGB(255, 255, 255));
+		pull3.LoadBitmap("Bitmaps\\pull3.bmp", RGB(255, 255, 255));
 	}
 
 	void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -498,6 +522,11 @@ namespace game_framework
 			ShellExecute(NULL, "open", "JSTest\\demo\\AngryBird_demo\\game_sample.html", NULL, NULL, SW_SHOW);
 			return;
 		}*/
+		if (mapNow == 21 && shoot == false)
+		{
+			if (point.x > 335 && point.x < 349 && point.y > 430 && point.y <= 480)
+				clickPull = true;
+		}
 		if (mapNow == 4)
 			CAudio::Instance()->Play(AUDIO_GUN, 1);
 		if (point.x > 600 && point.x < 640 && point.y > 440 && point.y < 480)
@@ -535,7 +564,7 @@ namespace game_framework
 					addMove[0] = true;
 					addMove[4] = false;
 				}
-				if (mapNow == 19)
+				if (mapNow == 19 && point.x < 560)
 				{
 					for (int i = 0; i < MAP_SIZE; i++)
 					{
@@ -817,7 +846,7 @@ namespace game_framework
 			mapArr[13][60]->Reset();
 			mapNow = 18;
 		}
-		else if (mapNow == 18)
+		else if (mapNow == 18 && point.x < 560)
 		{
 			if (!mapArr[13][60]->IsFinalBitmap())
 				mapArr[13][60]->OnMove();
@@ -829,13 +858,50 @@ namespace game_framework
 
 	void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	{
-		if (mapNow != 20 && point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
+		if (showPull1 && point.y > 430 && point.y <= 456)
+		{
+			srand((unsigned)time(NULL));
+			pinballMusic = (rand() % 4);
+			CAudio::Instance()->Play(15 + pinballMusic, true);
+			shoot = true;
+			addMove[26] = true;
+		}
+		else if (showPull2 && point.y > 456 && point.y <= 468)
+		{
+			srand((unsigned)time(NULL));
+			pinballMusic = (rand() % 4);
+			CAudio::Instance()->Play(15 + pinballMusic, true);
+			shoot = true;
+			addMove[27] = true;
+		}
+		else if (showPull3 && point.y > 468 && point.y <= 480)
+		{
+			srand((unsigned)time(NULL));
+			pinballMusic = (rand() % 4);
+			CAudio::Instance()->Play(15 + pinballMusic, true);
+			shoot = true;
+			addMove[28] = true;
+		}
+		clickPull = false;
+		showPull1 = false;
+		showPull2 = false;
+		showPull3 = false;
+		if (shoot)
+			return;
+		if (mapNow != 4 && mapNow != 7 && mapNow != 15 && mapNow != 16 && mapNow != 17 && mapNow != 18 && mapNow != 19 && mapNow != 20 && mapNow != 21 && point.x > 560 && point.x < 640 && point.y > 160 && point.y < 240)
+		{
+			mapTemp = mapNow;
+			mapNow = 21;
+			showPinball = true;
+			return;
+		}
+		if (mapNow != 4 && mapNow != 7 && mapNow != 15 && mapNow != 16 && mapNow != 17 && mapNow != 18 && mapNow != 19 && mapNow != 20 && mapNow != 21 && point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
 		{
 			mapTemp = mapNow;
 			mapNow = 20;
 			return;
 		}
-		else if (point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
+		else if (mapNow != 4 && mapNow != 7 && mapNow != 15 && mapNow != 16 && mapNow != 17 && mapNow != 18 && mapNow != 19 && mapNow != 21 && point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
 		{
 			mapNow = mapTemp;
 			mapTemp = 15;
@@ -891,6 +957,33 @@ namespace game_framework
 	void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	{
 		// 沒事。如果需要處理滑鼠移動的話，寫code在這裡
+		if (mapNow == 21 && clickPull)
+		{
+			if (point.y > 430 && point.y <= 456)
+			{
+				showPull1 = true;
+				showPull2 = false;
+				showPull3 = false;
+			}
+			else if (point.y > 456 && point.y <= 468)
+			{
+				showPull1 = false;
+				showPull2 = true;
+				showPull3 = false;
+			}
+			else if (point.y > 468 && point.y <= 480)
+			{
+				showPull1 = false;
+				showPull2 = false;
+				showPull3 = true;
+			}
+			else
+			{
+				showPull1 = false;
+				showPull2 = false;
+				showPull3 = false;
+			}
+		}
 		if (mapNow >= 1 && mapNow <= 14 && experience.GetInteger() < 99999)
 			experience.Add(813);
 		else if (mapNow >= 1 && mapNow <= 14 && experience.GetInteger() == 99999 && level.GetInteger() < 99999)
@@ -902,7 +995,7 @@ namespace game_framework
 			chooseMovie = false;
 		for (int i = 0; i < ADD_SIZE; i++)
 		{
-			if (i != 21 && i != 22 && i != 23)
+			if (i != 21 && i != 22 && i != 23 && i != 25 && i != 26 && i != 27 && i != 28)
 				addMove[i] = false;
 		}
 		if (add[21]->IsFinalBitmap())
@@ -1028,19 +1121,43 @@ namespace game_framework
 				pic[i][j]->OnShow();
 			}
 		}
+		if (mapNow != 4 && mapNow != 7 && mapNow != 15 && mapNow != 16 && mapNow != 17 && mapNow != 18 && mapNow != 19)
+		{
+			cama.ShowBitmap();
+			gamble.ShowBitmap();
+		}
+		if (showPinball)
+		    pinball.ShowBitmap();
+		if (showPull1 || showPull2 || showPull3 || !showPinball)
+			addMove[25] = false;
+		else
+			addMove[25] = true;
 		for (int i = 0; i < ADD_SIZE; i++)
 		{
 			add[i]->SetTopLeft(addX[i], addY[i]);
 			add[i]->OnShow();
+			if (addMove[26] || addMove[27] || addMove[28])
+			{
+				srand((unsigned)time(NULL));
+				if ((rand() % 50 + 1) % 7 == 0)
+					experience.Add(rand() % 50 + 1);
+				if (experience.GetInteger() > 99999)
+					experience.SetInteger(99999);
+			}
 		}
-		if ((mapNow >= 1 && mapNow <= 14) || mapNow == 20)
+		if (showPull1)
+			pull1.ShowBitmap();
+		if (showPull2)
+			pull2.ShowBitmap();
+		if (showPull3)
+			pull3.ShowBitmap();
+		if ((mapNow >= 1 && mapNow <= 14) || mapNow == 20 || mapNow == 21)
 		{
 			level.ShowBitmapL();
 			experience.ShowBitmapE();
 			money.ShowBitmap();
 			levelExpMoney.ShowBitmap();
 		}
-		cama.ShowBitmap();
 		for (int i = 0; i < 12; i++)
 		{
 			if (level.GetInteger() == animalLevel[i] && animalBlock[i])
