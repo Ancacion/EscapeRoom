@@ -44,7 +44,7 @@
 #define OBJ_SIZE 65
 #define BAGOBJ_SIZE 15
 #define HIDEOBJ_SIZE 35
-#define ADD_SIZE 29
+#define ADD_SIZE 32
 #define Swap(x, y) { int t = x; x = y; y = t; }
 
 namespace game_framework {
@@ -126,6 +126,10 @@ namespace game_framework {
 		CInteger experience, money, level;
 		CMovingBitmap levelExpMoney, cama, gameCard[12], growButton[12], animal[12][4];
 		CMovingBitmap gamble, pinball, pull1, pull2, pull3;
+		CMovingBitmap pubg, background, background2, rotationLeft[7], rotationRight[7];
+		bool rotationL[7] = { false, false, false, false, false, false, false };
+		bool rotationR[7] = { false, false, false, false, false, false, false };
+		bool back = false;
 		int pinballMusic;
 		bool showPinball = false, showPull1 = false, showPull2 = false, showPull3 = false, clickPull = false, shoot = false;
 		int animalFlag[12] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -138,9 +142,9 @@ namespace game_framework {
 		bool mapMove, npcMove, macMove, picMove[8][15], mes, chooseMovie;
 		int digit, objNow, mapNow, mapTemp;
 		int password7, password9, passwordInput;
-		int addLength[ADD_SIZE] = { 3, 29, 41, 31, 5, 41, 5, 21, 1, 1, 1, 1, 1, 1, 1, 1, 21, 21, 21, 21, 42, 32, 2, 2, 2, 5, 120, 92, 103 };
-		int addX[ADD_SIZE] = { 0, 0, 0, 440, 0, 0, 0, 420, 0, 0, 0, 0, 0, 0, 0, 0, 310, 365, 530, 585, 0, 0, 600, 600, 420, 340, 0, 0, 0 };
-		int addY[ADD_SIZE] = { 0, 200, 0, 250, 0, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 160, 160, 160, 160, 0, 0, 440, 440, 80, 444, 0, 0, 0 };
+		int addLength[ADD_SIZE] = { 3, 29, 41, 31, 5, 41, 5, 21, 1, 1, 1, 1, 1, 1, 1, 1, 21, 21, 21, 21, 42, 32, 2, 2, 2, 5, 120, 92, 103, 29, 10, 3 };
+		int addX[ADD_SIZE] = { 0, 0, 0, 440, 0, 0, 0, 420, 0, 0, 0, 0, 0, 0, 0, 0, 310, 365, 530, 585, 0, 0, 600, 600, 420, 340, 0, 0, 0, 0, 0, 560 };
+		int addY[ADD_SIZE] = { 0, 200, 0, 250, 0, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 160, 160, 160, 160, 0, 0, 440, 440, 80, 444, 0, 0, 0, 0, 0, 450 };
 		int bagObj[BAGOBJ_SIZE] = { 6, 12, 13, 9, 10, 11, 16, 5, 21, 20, 18, 22, 14, 23, 46 };
 		int hideObj[HIDEOBJ_SIZE] = { 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 47, 48, 49, 50, 51, 52, 53, 7, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64 };
 		int hideArr[OBJ_SIZE];

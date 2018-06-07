@@ -246,9 +246,9 @@ namespace game_framework
 		}
 		for (int i = 0; i < ADD_SIZE; i++)
 		{
-			if (i == 7 || i == 16 || i == 17 || i == 18 || i == 19 || i == 25)
+			if (i == 7 || i == 16 || i == 17 || i == 18 || i == 19 || i == 25 || i == 31)
 				add[i] = new CAnimation(20);
-			else if(i == 6)
+			else if(i == 6 || i == 29)
 				add[i] = new CAnimation(2);
 			else if (i == 26 || i == 27 || i == 28)
 				add[i] = new CAnimation(3);
@@ -294,6 +294,14 @@ namespace game_framework
 		pull1.SetTopLeft(340, 444);
 		pull2.SetTopLeft(340, 444);
 		pull3.SetTopLeft(340, 444);
+		pubg.SetTopLeft(560, 240);
+		background2.SetTopLeft(0, 0);
+		background.SetTopLeft(0, 0);
+		for (int i = 0; i < 7; i++)
+		{
+			rotationLeft[i].SetTopLeft(0, 0);
+			rotationRight[i].SetTopLeft(0, 0);
+		}
 		for (int i = 0; i < 12; i++)
 		{
 			gameCard[i].SetTopLeft(animalX[i], animalY[i]);
@@ -375,15 +383,15 @@ namespace game_framework
 		{
 			if (addMove[i])
 			{
-				if (!add[i]->IsFinalBitmap() && (i == 1 || i == 7 || i == 16 || i == 17 || i == 18 || i == 19))
+				if (!add[i]->IsFinalBitmap() && (i == 1 || i == 7 || i == 16 || i == 17 || i == 18 || i == 19 || i == 29 || i == 30))
 					add[i]->ToFirst();
 				else if (!add[i]->IsFinalBitmap())
 					add[i]->OnMove();
 				else if (i == 0)
 					add[i]->Reset();
-				if ((i == 1 || i == 7 || i == 16 || i == 17 || i == 18 || i == 19) && add[i]->IsFinalBitmap())
+				if ((i == 1 || i == 7 || i == 16 || i == 17 || i == 18 || i == 19 || i == 29 || i == 30) && add[i]->IsFinalBitmap())
 					add[i]->ToSecond();
-				if (i == 25 && add[i]->IsFinalBitmap())
+				if ((i == 25 || i == 31) && add[i]->IsFinalBitmap())
 					add[i]->Reset();
 				if ((i == 26 || i == 27 || i == 28) && add[i]->IsFinalBitmap())
 				{
@@ -496,6 +504,23 @@ namespace game_framework
 		pull1.LoadBitmap("Bitmaps\\pull1.bmp", RGB(255, 255, 255));
 		pull2.LoadBitmap("Bitmaps\\pull2.bmp", RGB(255, 255, 255));
 		pull3.LoadBitmap("Bitmaps\\pull3.bmp", RGB(255, 255, 255));
+		pubg.LoadBitmap("Bitmaps\\pubg.bmp", RGB(255, 255, 255));
+		background2.LoadBitmap("Bitmaps\\background2.bmp", RGB(255, 255, 255));
+		background.LoadBitmap("Bitmaps\\background.bmp", RGB(255, 255, 255));
+		rotationLeft[0].LoadBitmap("Bitmaps\\rotationLeft\\rotation1.bmp", RGB(255, 255, 255));
+		rotationLeft[1].LoadBitmap("Bitmaps\\rotationLeft\\rotation2.bmp", RGB(255, 255, 255));
+		rotationLeft[2].LoadBitmap("Bitmaps\\rotationLeft\\rotation3.bmp", RGB(255, 255, 255));
+		rotationLeft[3].LoadBitmap("Bitmaps\\rotationLeft\\rotation4.bmp", RGB(255, 255, 255));
+		rotationLeft[4].LoadBitmap("Bitmaps\\rotationLeft\\rotation5.bmp", RGB(255, 255, 255));
+		rotationLeft[5].LoadBitmap("Bitmaps\\rotationLeft\\rotation6.bmp", RGB(255, 255, 255));
+		rotationLeft[6].LoadBitmap("Bitmaps\\rotationLeft\\rotation7.bmp", RGB(255, 255, 255));
+		rotationRight[0].LoadBitmap("Bitmaps\\rotationRight\\rotation1.bmp", RGB(255, 255, 255));
+		rotationRight[1].LoadBitmap("Bitmaps\\rotationRight\\rotation2.bmp", RGB(255, 255, 255));
+		rotationRight[2].LoadBitmap("Bitmaps\\rotationRight\\rotation3.bmp", RGB(255, 255, 255));
+		rotationRight[3].LoadBitmap("Bitmaps\\rotationRight\\rotation4.bmp", RGB(255, 255, 255));
+		rotationRight[4].LoadBitmap("Bitmaps\\rotationRight\\rotation5.bmp", RGB(255, 255, 255));
+		rotationRight[5].LoadBitmap("Bitmaps\\rotationRight\\rotation6.bmp", RGB(255, 255, 255));
+		rotationRight[6].LoadBitmap("Bitmaps\\rotationRight\\rotation7.bmp", RGB(255, 255, 255));
 	}
 
 	void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -504,6 +529,12 @@ namespace game_framework
 		const char KEY_UP    = 0x26; // keyboard上箭頭
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
 		const char KEY_DOWN  = 0x28; // keyboard下箭頭
+		if (nChar == KEY_LEFT || nChar == KEY_UP || nChar == KEY_RIGHT || nChar == KEY_DOWN)
+		{
+			back = true;
+			addMove[30] = true;
+			CAudio::Instance()->Play(AUDIO_GUN2, true);
+		}
 	}
 
 	void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -512,6 +543,12 @@ namespace game_framework
 		const char KEY_UP    = 0x26; // keyboard上箭頭
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
 		const char KEY_DOWN  = 0x28; // keyboard下箭頭
+		if (nChar == KEY_LEFT || nChar == KEY_UP || nChar == KEY_RIGHT || nChar == KEY_DOWN)
+		{
+			back = false;
+			addMove[30] = false;
+			CAudio::Instance()->Stop(AUDIO_GUN2);
+		}
 	}
 
 	void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
@@ -522,6 +559,18 @@ namespace game_framework
 			ShellExecute(NULL, "open", "JSTest\\demo\\AngryBird_demo\\game_sample.html", NULL, NULL, SW_SHOW);
 			return;
 		}*/
+		if (point.x > 560 && point.x < 640 && point.y > 240 && point.y < 320 && (mapNow == 1 || mapNow == 3 || mapNow == 6 || mapNow == 8 || mapNow == 9 || mapNow == 10 || mapNow == 11 || mapNow == 12 || mapNow == 13 || mapNow == 14))
+		{
+			mapTemp = mapNow;
+			mapNow = 22;
+			return;
+		}
+		if (mapNow == 22 && point.x < 640 && point.y > 240 && point.y < 320)
+		{
+			mapNow = mapTemp;
+			mapTemp = 15;
+			return;
+		}
 		if (mapNow == 21 && shoot == false)
 		{
 			if (point.x > 335 && point.x < 349 && point.y > 430 && point.y <= 480)
@@ -888,20 +937,20 @@ namespace game_framework
 		showPull3 = false;
 		if (shoot)
 			return;
-		if (mapNow != 4 && mapNow != 7 && mapNow != 15 && mapNow != 16 && mapNow != 17 && mapNow != 18 && mapNow != 19 && mapNow != 20 && mapNow != 21 && point.x > 560 && point.x < 640 && point.y > 160 && point.y < 240)
+		if ((mapNow == 1 || mapNow == 3 || mapNow == 6 || mapNow == 8 || mapNow == 9 || mapNow == 10 || mapNow == 11 || mapNow == 12 || mapNow == 13 || mapNow == 14) && point.x > 560 && point.x < 640 && point.y > 160 && point.y < 240)
 		{
 			mapTemp = mapNow;
 			mapNow = 21;
 			showPinball = true;
 			return;
 		}
-		if (mapNow != 4 && mapNow != 7 && mapNow != 15 && mapNow != 16 && mapNow != 17 && mapNow != 18 && mapNow != 19 && mapNow != 20 && mapNow != 21 && point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
+		if ((mapNow == 1 || mapNow == 3 || mapNow == 6 || mapNow == 8 || mapNow == 9 || mapNow == 10 || mapNow == 11 || mapNow == 12 || mapNow == 13 || mapNow == 14) && point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
 		{
 			mapTemp = mapNow;
 			mapNow = 20;
 			return;
 		}
-		else if (mapNow != 4 && mapNow != 7 && mapNow != 15 && mapNow != 16 && mapNow != 17 && mapNow != 18 && mapNow != 19 && mapNow != 21 && point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
+		if (mapNow == 20 && point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
 		{
 			mapNow = mapTemp;
 			mapTemp = 15;
@@ -957,6 +1006,45 @@ namespace game_framework
 	void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	{
 		// 沒事。如果需要處理滑鼠移動的話，寫code在這裡
+		for (int i = 0; i < 7; i++)
+		{
+			rotationL[i] = false;
+			rotationR[i] = false;
+		}
+		if (mapNow == 22)
+		{
+			if (point.x >= 37 && point.x < 74)
+				rotationL[6] = true;
+			else if (point.x >= 74 && point.x < 111)
+				rotationL[5] = true;
+			else if (point.x >= 111 && point.x < 148)
+				rotationL[4] = true;
+			else if (point.x >= 148 && point.x < 185)
+				rotationL[3] = true;
+			else if (point.x >= 185 && point.x < 222)
+				rotationL[2] = true;
+			else if (point.x >= 222 && point.x < 259)
+				rotationL[1] = true;
+			else if (point.x >= 259 && point.x < 296)
+				rotationL[0] = true;
+			else if (point.x >= 333 && point.x < 370)
+				rotationR[0] = true;
+			else if (point.x >= 370 && point.x < 407)
+				rotationR[1] = true;
+			else if (point.x >= 407 && point.x < 444)
+				rotationR[2] = true;
+			else if (point.x >= 444 && point.x < 481)
+				rotationR[3] = true;
+			else if (point.x >= 481 && point.x < 518)
+				rotationR[4] = true;
+			else if (point.x >= 518 && point.x < 555)
+				rotationR[5] = true;
+			else if (point.x >= 555 && point.x < 592)
+				rotationR[6] = true;
+			addMove[31] = true;
+		}
+		else
+			addMove[31] = false;
 		if (mapNow == 21 && clickPull)
 		{
 			if (point.y > 430 && point.y <= 456)
@@ -984,9 +1072,9 @@ namespace game_framework
 				showPull3 = false;
 			}
 		}
-		if (mapNow >= 1 && mapNow <= 14 && experience.GetInteger() < 99999)
+		if (((mapNow >= 1 && mapNow <= 14) || mapNow == 22) && experience.GetInteger() < 99999)
 			experience.Add(813);
-		else if (mapNow >= 1 && mapNow <= 14 && experience.GetInteger() == 99999 && level.GetInteger() < 99999)
+		else if (((mapNow >= 1 && mapNow <= 14) || mapNow == 22) && experience.GetInteger() == 99999 && level.GetInteger() < 99999)
 		{
 			level.Add(1);
 			experience.Add(-99999);
@@ -995,7 +1083,7 @@ namespace game_framework
 			chooseMovie = false;
 		for (int i = 0; i < ADD_SIZE; i++)
 		{
-			if (i != 21 && i != 22 && i != 23 && i != 25 && i != 26 && i != 27 && i != 28)
+			if (i != 21 && i != 22 && i != 23 && i != 25 && i != 26 && i != 27 && i != 28 && i != 29 && i != 30 && i != 31)
 				addMove[i] = false;
 		}
 		if (add[21]->IsFinalBitmap())
@@ -1121,7 +1209,7 @@ namespace game_framework
 				pic[i][j]->OnShow();
 			}
 		}
-		if (mapNow != 4 && mapNow != 7 && mapNow != 15 && mapNow != 16 && mapNow != 17 && mapNow != 18 && mapNow != 19)
+		if (mapNow == 1 || mapNow == 3 || mapNow == 6 || mapNow == 8 || mapNow == 9 || mapNow == 10 || mapNow == 11 || mapNow == 12 || mapNow == 13 || mapNow == 14 || mapNow == 20)
 		{
 			cama.ShowBitmap();
 			gamble.ShowBitmap();
@@ -1132,6 +1220,18 @@ namespace game_framework
 			addMove[25] = false;
 		else
 			addMove[25] = true;
+		if (mapNow == 22 && back)
+		{
+			addMove[29] = true;
+			background.ShowBitmap();
+		}
+		else if (mapNow == 22)
+		{
+			background2.ShowBitmap();
+			addMove[29] = false;
+		}
+		if (mapNow == 1 || mapNow == 3 || mapNow == 6 || mapNow == 8 || mapNow == 9 || mapNow == 10 || mapNow == 11 || mapNow == 12 || mapNow == 13 || mapNow == 14 || mapNow == 22)
+			pubg.ShowBitmap();
 		for (int i = 0; i < ADD_SIZE; i++)
 		{
 			add[i]->SetTopLeft(addX[i], addY[i]);
@@ -1144,6 +1244,25 @@ namespace game_framework
 				if (experience.GetInteger() > 99999)
 					experience.SetInteger(99999);
 			}
+			if (mapNow == 22 && money.GetInteger() < 99999 && back)
+			{
+				money.Add(1);
+				if (money.GetInteger() > 99999)
+					money.SetInteger(99999);
+			}
+		}
+		for (int i = 0; i < 7; i++)
+		{
+			if (rotationL[i])
+			{
+				rotationLeft[i].ShowBitmap();
+				break;
+			}
+			if (rotationR[i])
+			{
+				rotationRight[i].ShowBitmap();
+				break;
+			}
 		}
 		if (showPull1)
 			pull1.ShowBitmap();
@@ -1151,7 +1270,7 @@ namespace game_framework
 			pull2.ShowBitmap();
 		if (showPull3)
 			pull3.ShowBitmap();
-		if ((mapNow >= 1 && mapNow <= 14) || mapNow == 20 || mapNow == 21)
+		if ((mapNow >= 1 && mapNow <= 14) || mapNow == 20 || mapNow == 21 || mapNow == 22)
 		{
 			level.ShowBitmapL();
 			experience.ShowBitmapE();
