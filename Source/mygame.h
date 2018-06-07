@@ -124,16 +124,16 @@ namespace game_framework {
 		CAnimation *pic[8][15];
 		CAnimation *add[ADD_SIZE];
 		CInteger experience, money, level;
-		CMovingBitmap levelExpMoney, cama, gameCard[12], growButton[12], animal[12][4], items[10], soldout[10];
+		CMovingBitmap levelExpMoney, cama, gameCard[12], growButton[12], animal[12][4], items[10], soldout[10], ending1, ending2;
 		/*int animalFlag[12] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		bool animalBlock[12] = { true, true, true, true, true, true, true, true, true, true, true, true };
 		int animalLevel[12] = { 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22 };
 		int animalX[12] = { 80, 160, 240, 320, 400, 480, 80, 160, 240, 320, 400, 480 };
 		int animalY[12] = { 80, 80, 80, 80, 80, 80, 240, 240, 240, 240, 240, 240 };*/
 		///////////////////
-		int itemFlag[12] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		bool itemBlock[12] = { true, true, true, true, true, true, true, true, true, true, true, true};
-		bool soldBlock[12] = { true, true, true, true, true, true, true, true, true, true, true, true};
+		int itemFlag[10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		bool itemBlock[10] = { true, true, true, true, true, true, true, true, true, true};
+		bool soldBlock[10] = { true, true, true, true, true, true, true, true, true, true};
 		int itemLevel[10] = { 0, 0, 0, 0, 0, 1, 1, 1, 1, 1 };
 		int itemX[10] = { 80, 160, 240, 320, 400, 480, 80, 160, 240, 320 };
 		int itemY[10] = { 80, 80, 80, 80, 80, 80, 240, 240, 240, 240 };

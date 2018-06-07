@@ -287,6 +287,8 @@ namespace game_framework
 		money.SetTopLeft(20, 118);
 		levelExpMoney.SetTopLeft(0, 80);
 		cama.SetTopLeft(560, 80);
+		ending1.SetTopLeft(400, 240);
+		ending2.SetTopLeft(480, 240);
 		for (int i = 0; i < 10; i++)
 		{
 			/*gameCard[i].SetTopLeft(animalX[i], animalY[i]); //animal -> item
@@ -469,6 +471,8 @@ namespace game_framework
 		money.LoadBitmap();
 		levelExpMoney.LoadBitmap("Bitmaps\\levelExpMoney.bmp", RGB(255, 255, 255));
 		cama.LoadBitmap("Bitmaps\\cama.bmp", RGB(255, 255, 255));
+		ending1.LoadBitmap("Bitmaps\\ending1.bmp", RGB(255, 255, 255));
+		ending2.LoadBitmap("Bitmaps\\ending2.bmp", RGB(255, 255, 255));
 		//const string rootAnimal = "Bitmaps\\animal";
 		for (int i = 0; i < 10; i++)
 		{
@@ -1097,6 +1101,8 @@ namespace game_framework
 				else
 					gameCard[i].ShowBitmap();//»\¥d¹Ï
 			}
+			ending1.ShowBitmap();
+			ending2.ShowBitmap();
 		}
 		//////////////////
 	}
