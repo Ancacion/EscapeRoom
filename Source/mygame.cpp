@@ -283,7 +283,7 @@ namespace game_framework
 		level.SetTopLeft(20, 80);
 		experience.SetInteger(0);
 		experience.SetTopLeft(20, 99);
-		money.SetInteger(0);
+		money.SetInteger(50000);
 		money.SetTopLeft(20, 118);
 		levelExpMoney.SetTopLeft(0, 80);
 		cama.SetTopLeft(560, 80);
@@ -293,6 +293,7 @@ namespace game_framework
 			growButton[i].SetTopLeft(animalX[i], animalY[i] + 80);*/
 			gameCard[i].SetTopLeft(itemX[i], itemY[i]); //animal -> item
 			growButton[i].SetTopLeft(itemX[i], itemY[i] + 80);
+			soldout[i].SetTopLeft(itemX[i], itemY[i]);
 			/*for (int j = 0; j < 4; j++)
 				animal[i][j].SetTopLeft(animalX[i], animalY[i]);*/
 		}
@@ -473,6 +474,9 @@ namespace game_framework
 		{
 			gameCard[i].LoadBitmap("Bitmaps\\gameCard.bmp", RGB(255, 255, 255));
 			growButton[i].LoadBitmap("Bitmaps\\growButton.bmp", RGB(255, 255, 255));
+			/////////////
+			soldout[i].LoadBitmap("Bitmaps\\soldout.bmp", RGB(255, 255, 255));
+			/////////////
 			/*for (int j = 0; j < 4; j++)
 			{
 				filePath = rootAnimal + to_string(i + 1) + "\\a" + to_string(j + 1) + ".bmp";
@@ -843,7 +847,6 @@ namespace game_framework
 			mapNow = 14;
 		}
 	}
-
 	void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	{
 		if (mapNow != 20 && point.x > 560 && point.x < 640 && point.y > 80 && point.y < 160)
@@ -866,6 +869,7 @@ namespace game_framework
 				{
 					itemFlag[i]++;
 					itemBlock[i] = true;
+					soldBlock[i] = false;
 					money.Add(-5000);
 				}
 			}
@@ -1062,7 +1066,7 @@ namespace game_framework
 		}
 		cama.ShowBitmap();
 		//////////////////
-		for (int i = 0; i < 12; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			if (level.GetInteger() == itemLevel[i] && itemBlock[i])//卡牌是否可掀起與等級有關
 			{
@@ -1076,9 +1080,20 @@ namespace game_framework
 			{
 				if (itemFlag[i] > 0)
 				{
-					items[i].ShowBitmap();//顯示卡牌正面
-					growButton[i].ShowBitmap();//需消耗金幣數量
+					if (soldBlock[i] == false)
+					{
+						soldout[i].ShowBitmap();
+					}
+					else
+					{
+						items[i].ShowBitmap();//顯示卡牌正面
+						growButton[i].ShowBitmap();//需消耗金幣數量
+					}
 				}
+				/*else if (soldBlock[i] == false)
+				{
+					soldout[i].ShowBitmap();
+				}*/
 				else
 					gameCard[i].ShowBitmap();//蓋卡圖
 			}
