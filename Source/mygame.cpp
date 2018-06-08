@@ -120,7 +120,9 @@ namespace game_framework
 
 	void CGameStateInit::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	{
-    
+		const char KEY_ESC = 27;
+		if (nChar == KEY_ESC)								        // Demo 關閉遊戲的方法
+			PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE, 0, 0);	// 關閉遊戲
 	}
 
 	void CGameStateInit::OnLButtonDown(UINT nFlags, CPoint point)
@@ -297,6 +299,7 @@ namespace game_framework
 		pubg.SetTopLeft(560, 240);
 		background2.SetTopLeft(0, 0);
 		background.SetTopLeft(0, 0);
+		end.SetTopLeft(0, 0);
 		for (int i = 0; i < 7; i++)
 		{
 			rotationLeft[i].SetTopLeft(0, 0);
@@ -521,6 +524,7 @@ namespace game_framework
 		rotationRight[4].LoadBitmap("Bitmaps\\rotationRight\\rotation5.bmp", RGB(255, 255, 255));
 		rotationRight[5].LoadBitmap("Bitmaps\\rotationRight\\rotation6.bmp", RGB(255, 255, 255));
 		rotationRight[6].LoadBitmap("Bitmaps\\rotationRight\\rotation7.bmp", RGB(255, 255, 255));
+		end.LoadBitmap("Bitmaps\\obj\\obj64.bmp", RGB(255, 255, 255));
 	}
 
 	void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -543,6 +547,9 @@ namespace game_framework
 		const char KEY_UP    = 0x26; // keyboard上箭頭
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
 		const char KEY_DOWN  = 0x28; // keyboard下箭頭
+		const char KEY_ESC = 27;
+		if (nChar == KEY_ESC)								        // Demo 關閉遊戲的方法
+			PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE, 0, 0);	// 關閉遊戲
 		if (nChar == KEY_LEFT || nChar == KEY_UP || nChar == KEY_RIGHT || nChar == KEY_DOWN)
 		{
 			back = false;
@@ -1176,7 +1183,8 @@ namespace game_framework
 
 	void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	{
- 
+		endFlag = true;
+		mapNow *= 100;
 	}
 
 	void CGameStateRun::OnShow()
@@ -1298,5 +1306,7 @@ namespace game_framework
 					gameCard[i].ShowBitmap();
 			}
 		}
+		if (endFlag)
+			end.ShowBitmap();
 	}
 }

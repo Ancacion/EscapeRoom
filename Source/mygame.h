@@ -127,6 +127,8 @@ namespace game_framework {
 		CMovingBitmap levelExpMoney, cama, gameCard[12], growButton[12], animal[12][4];
 		CMovingBitmap gamble, pinball, pull1, pull2, pull3;
 		CMovingBitmap pubg, background, background2, rotationLeft[7], rotationRight[7];
+		CMovingBitmap end;
+		bool endFlag = false;
 		bool rotationL[7] = { false, false, false, false, false, false, false };
 		bool rotationR[7] = { false, false, false, false, false, false, false };
 		bool back = false;
