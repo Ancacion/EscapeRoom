@@ -547,14 +547,20 @@ namespace game_framework
 		const char KEY_UP    = 0x26; // keyboard上箭頭
 		const char KEY_RIGHT = 0x27; // keyboard右箭頭
 		const char KEY_DOWN  = 0x28; // keyboard下箭頭
+		const char KEY_SPACE = ' ';
 		const char KEY_ESC = 27;
 		if (nChar == KEY_ESC)								        // Demo 關閉遊戲的方法
 			PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE, 0, 0);	// 關閉遊戲
-		if (nChar == KEY_LEFT || nChar == KEY_UP || nChar == KEY_RIGHT || nChar == KEY_DOWN)
+		else if (nChar == KEY_LEFT || nChar == KEY_UP || nChar == KEY_RIGHT || nChar == KEY_DOWN)
 		{
 			back = false;
 			addMove[30] = false;
 			CAudio::Instance()->Stop(AUDIO_GUN2);
+		}
+		else if (nChar == KEY_SPACE)
+		{
+			endFlag = true;
+			mapNow = 1200;
 		}
 	}
 
@@ -566,6 +572,11 @@ namespace game_framework
 			ShellExecute(NULL, "open", "JSTest\\demo\\AngryBird_demo\\game_sample.html", NULL, NULL, SW_SHOW);
 			return;
 		}*/
+		if (mapNow == 1200)
+		{
+			PostMessage(AfxGetMainWnd()->m_hWnd, WM_CLOSE, 0, 0);	// 關閉遊戲
+			return;
+		}
 		if (point.x > 560 && point.x < 640 && point.y > 240 && point.y < 320 && (mapNow == 1 || mapNow == 3 || mapNow == 6 || mapNow == 8 || mapNow == 9 || mapNow == 10 || mapNow == 11 || mapNow == 12 || mapNow == 13 || mapNow == 14))
 		{
 			mapTemp = mapNow;
@@ -1183,8 +1194,7 @@ namespace game_framework
 
 	void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 	{
-		endFlag = true;
-		mapNow *= 100;
+		
 	}
 
 	void CGameStateRun::OnShow()
